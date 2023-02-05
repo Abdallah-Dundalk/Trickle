@@ -11543,3 +11543,20 @@ html {
   margin-bottom: -30px;
   overflow: hidden;
 }
+
+.song-info {
+  background: #000;
+  color: white;
+  opacity: 90%;
+  height: 162.82px;
+  
+}
+
+hr {
+  background-color:#100d28;
+  margin: 0;
+  height: 10px;
+  border: none;
+  opacity: 80%;
+}
+
