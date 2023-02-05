@@ -11295,30 +11295,30 @@ textarea.form-control-lg {
 
 /* Code for music player. This code is by Chukslord and can be found here  https://gist.github.com/Chukslord1/f65093cd9b16fff56e68903259887299 ------*/
 
-*:focus{
+/* *:focus{
   outline: none;
 }
 html {
   background: #f2f2f2;
-}
-body {
+} */
+/* body {
   margin: 0;
   font-family: "Raleway",sans-serif;
-}
-h1 {
+} */
+.music-player h1 {
   margin: 0;
   font-size: 33px;
   color: #fff;
   padding: 0 10%;
 }
-h3 {
+.music-player h3 {
   margin: 0;
   font-size: 17px;
   font-weight: 500;
   color: #ccc;
   padding: 0 10%;
 }
-.container {
+.music-player-container {
   display: block;
   width: 100%;
   height: 750px;
@@ -11335,6 +11335,7 @@ h3 {
   height: 570px;
   margin: auto;
   margin-top: 6%;
+
   border-radius: 0 0 10px 10px;
   background: transparent linear-gradient(to bottom,rgba(10,11,31,0.9) 50%,rgb(10,11,31) 70%) repeat scroll 0 0;
   box-shadow: 1px 10px 20px 5px #222;
@@ -11358,10 +11359,11 @@ h3 {
   width: 100%;
 }
 .lecteur {
-  width: 100%;
+  
   display: block;
   height: auto;
   position: relative;
+  z-index: 1;
   float: left;
 }
 .mejs__button>button:focus {
@@ -11530,4 +11532,14 @@ h3 {
 }
 .mejs__controls .mejs__horizontal-volume-slider .mejs__horizontal-volume-current {
   background: #fff;
+}
+
+.cloudinary-player {
+  margin-top: -90px;
+ 
+}
+
+.iframe-container {
+  margin-bottom: -30px;
+  overflow: hidden;
 }

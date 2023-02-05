@@ -5,9 +5,9 @@
  
 <!-- Content section-->
 {% if user.is_authenticated %}
-<div class="contain">
-  <div class="container">
-    <div class="music-player">
+<div class="music-player-contain">
+  <div class="music-player-container">
+    <div class="music-player c-12">
       {% for item in page_obj %}
       <div class="cover">
         <img alt="" src="{{item.image.url}}" />
@@ -18,20 +18,49 @@
         </h3>
         <h1>
           {{item.title}}
-          <iframe src="{{item.audio_link}}" height="100" width="300" title="Iframe Example"></iframe>
         </h1>
       </div>
-      <center><a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"><i
-            class="fa fa-step-backward fa-2x"></i></a> &nbsp; &nbsp; &nbsp; <a
-          href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}"><i
-            class="fa fa-step-forward fa-2x"></i></a></center>
-      <div class="lecteur">
-        <audio class="fc-media" style="width: 100%;">
-          <source src="{% if item.audio_file %}{{item.audio_file.url}} {% else %} {{item.audio_link}} {% endif %}"
-            type="audio/mp3" />
-        </audio>
+      
+        
 
-      </div>
+        <div class="lecteur col-12">
+          <div class="row">
+            <div class="col-2 p-4">
+              <div class="row">
+                <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"><i
+                  class="fa fa-step-backward fa-2x"></i>
+              </a> 
+              </div>
+            </div>
+  
+            <div class="col-8 p-0 iframe-container">
+              <div class="row">
+                <iframe src="{{item.audio_link}}" title="cloudinary media player" class="cloudinary-player" ></iframe>
+            <audio class="fc-media" style="width: 100%;">
+              <source src="{% if item.audio_file %}{{item.audio_file.url}} {% else %} {{item.audio_link}} {% endif %}"
+                type="audio/mp3" />
+            </audio>
+              </div>
+            </div>
+  
+            <div class="col-2 p-3 pt-4">
+              <div class="row">
+                <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}"><i
+                  class="fa fa-step-forward fa-2x"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          
+          
+          
+  
+        </div>
+
+        
+      
+      
       {% endfor %}
     </div>
   </div>
@@ -84,7 +113,7 @@
 {% endif %}
 
 <!-- Footer-->
-<footer class="py-5 bg-dark fixed-bottom">
+<footer class="py-5 bg-dark">
     <div ><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
 </footer>
 

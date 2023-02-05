@@ -35,3 +35,6 @@ var audio = {
 };
 
 audio.init();
+
+// My code for playing music
+
