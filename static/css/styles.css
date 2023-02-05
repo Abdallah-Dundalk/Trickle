@@ -11321,7 +11321,7 @@ html {
 .music-player-container {
   display: block;
   width: 100%;
-  height: 750px;
+  height: 650px;
   margin: auto;
   overflow: hidden;
   background-image: url("https://res.cloudinary.com/da7esyqo0/image/upload/v1675555920/wallpaperflare.com_wallpaper_v22xmu.jpg");
@@ -11334,11 +11334,11 @@ html {
   width: 400px;
   height: 570px;
   margin: auto;
-  margin-top: 3%;
+  margin-top: 1%;
 
   border-radius: 0 0 10px 10px;
-  background: transparent linear-gradient(to bottom,rgba(10,11,31,0.9) 50%,rgb(10,11,31) 70%) repeat scroll 0 0;
-  box-shadow: 1px 10px 20px 5px #222;
+  
+  box-shadow: 1px 10px 20px 5px #000;
 }
 .cover {
   float: left;
