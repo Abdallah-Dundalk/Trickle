@@ -11334,7 +11334,7 @@ html {
   width: 400px;
   height: 570px;
   margin: auto;
-  margin-top: 6%;
+  margin-top: 3%;
 
   border-radius: 0 0 10px 10px;
   background: transparent linear-gradient(to bottom,rgba(10,11,31,0.9) 50%,rgb(10,11,31) 70%) repeat scroll 0 0;
@@ -11386,9 +11386,9 @@ html {
   position: relative;
 }
 .mejs__controls .mejs__playpause-button {
-  position: absolute !important;
-  right: 8%;
-  bottom: 95%;
+  position: relative;
+  right: -40%;
+  /* bottom: %; */
   width: 40px;
 }
 .mejs__controls .mejs__playpause-button button {
@@ -11504,7 +11504,7 @@ html {
 .mejs__controls .mejs__volume-button {
   position: relative;
   position: absolute !important;
-  top: 70px;
+  top: 90px;
   right: 25%;
   width: 40px;
   height: 40px;
@@ -11513,7 +11513,7 @@ html {
   display: block;
   position: absolute !important;
   position: relative;
-  top: 70px;
+  top: 90px;
   right: 10%;
   width: 60px;
   height: 4px;
@@ -11535,13 +11535,13 @@ html {
 }
 
 .cloudinary-player {
-  margin-top: -90px;
+  margin-top: 10px;
  
 }
 
 .iframe-container {
-  margin-bottom: -30px;
-  overflow: hidden;
+  margin-bottom: -10px;
+  
 }
 
 .song-info {
