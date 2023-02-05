@@ -11548,8 +11548,7 @@ html {
   background: #000;
   color: white;
   opacity: 90%;
-  height: 162.82px;
-  
+  height: auto;  
 }
 
 hr {
@@ -11558,5 +11557,9 @@ hr {
   height: 10px;
   border: none;
   opacity: 80%;
+}
+
+.song-image img {
+  width: 100%;
 }
 

@@ -8,16 +8,16 @@
 <div class="music-player-contain">
   <div class="music-player-container">
     <div class="music-player c-12">
-      {% for item in page_obj %}
+      
       <div class="cover">
-        <img alt="" src="{{item.image.url}}" />
+        <img alt="" src="{{song.image.url}}" />
       </div>
       <div class="titre">
         <h3>
-          {{item.artist}}
+          {{song.artist}}
         </h3>
         <h1>
-          {{item.title}}
+          {{song.title}}
         </h1>
       </div>
       
@@ -35,7 +35,7 @@
   
             <div class="col-8 p-0 iframe-container">
               <div class="row">
-                <iframe src="{{item.audio_link}}" title="cloudinary media player" class="cloudinary-player" ></iframe>
+                <iframe src="{{song.audio_link}}" title="cloudinary media player" class="cloudinary-player" ></iframe>
             <audio class="fc-media" style="width: 100%;">
               <source src="{% if item.audio_file %}{{item.audio_file.url}} {% else %} {{item.audio_link}} {% endif %}"
                 type="audio/mp3" />
@@ -61,7 +61,7 @@
         
       
       
-      {% endfor %}
+      
     </div>
   </div>
 </div>

@@ -18,11 +18,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.staticfiles.urls import static
+from home import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
+    path('play_song/<song_id>/', views.get_play_song_page, name='get_play_song_page'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
