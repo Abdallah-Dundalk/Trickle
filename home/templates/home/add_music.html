@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ 
+<!-- Content section-->
+
+<form method="'POST" action="">
+  {% csrf_token %}
+  
+
+  <div class="col-12 col-md-8">
+    <div>{{form.title.label_tag}}</div>
+    <div class="row">
+      {{form.title}}
+    </div>
+  </div>
+  <div class="col-12 col-md-8">
+    <div>{{form.artist.label_tag}}</div>
+    <div class="row">
+      {{form.artist}}
+    </div>
+  </div>
+  <div class="col-12 col-md-8">
+    <div>{{form.audio_file.label_tag}}</div>
+    <div class="row">
+      {{form.audio_file}}
+    </div>
+  </div>
+  <div class="col-12 col-md-8">
+    <div>{{form.image.label_tag}}</div>
+    <div class="row">
+      {{form.image}}
+    </div>
+  </div>
+  <div class="col-12 col-md-8">
+    <div>{{form.audio_link.label_tag}}</div>
+    <div class="row">
+      {{form.audio_link}}
+    </div>
+  </div>
+  <div class="col-12 col-md-8">
+    <div>{{form.duration.label_tag}}</div>
+    <div class="row">
+      {{form.duration}}
+    </div>
+  </div>
+</form>
+
+
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div ><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+</footer>
+
+{% endblock %}
+

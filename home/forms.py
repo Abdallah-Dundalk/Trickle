@@ -2,7 +2,7 @@ from django import forms
 from .models import Song
 
 
-class Add_song(forms.ModelForm):
+class AddSongForm(forms.ModelForm):
     class Meta:
         model = Song
         fields = '__all__'
@@ -14,5 +14,4 @@ class Add_song(forms.ModelForm):
             'duration': 'Duration',
             'audio_file': 'Audio File',
             'audio_link': 'Audio Link',
-            'duration': 'Duration',
         }
