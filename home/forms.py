@@ -12,4 +12,7 @@ class Add_song(forms.ModelForm):
             'artist': 'Artist',
             'image': 'Image',
             'duration': 'Duration',
+            'audio_file': 'Audio File',
+            'audio_link': 'Audio Link',
+            'duration': 'Duration',
         }
