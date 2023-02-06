@@ -29,13 +29,7 @@
         <!-- Core theme JS-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script src="{% static 'js/scripts.js' %}"></script>
-        <script>
-          $(document).ready(function(){
-            $("h1").click(function(){
-              $(this).hide();
-            });
-          });
-          </script>
+        
         {% endblock %}
 
         {% block extra_js %}
@@ -59,7 +53,7 @@
             aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
               <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
               <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
               {% if request.user.is_authenticated %}

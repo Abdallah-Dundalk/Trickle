@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
+    path('index',views.index , name='home'),
     path('play_song/<song_id>/', views.get_play_song_page, name='get_play_song_page'),
 ]
 
