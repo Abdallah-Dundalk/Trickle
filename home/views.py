@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.paginator import Paginator
 from . models import Song
 from . forms import AddSongForm
-
+from django.contrib import messages
 # def index(request):
 #     """ A view to return the index page"""
 #     paginator = Paginator(Song.objects.all(), 1)
@@ -35,15 +35,20 @@ def get_play_song_page(request, song_id):
     return render(request, 'home/play_song.html', context)
 
 
-def add_music_page(request):
+def add_music(request):
     if request.method == 'POST':
-        form = AddSongForm(request.POST)
+        form = AddSongForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             print("form saved")
-            message.success(request, 'Mussic successfully added')
+            messages.success(request, 'Music successfully added')
+            return redirect('add_music')
+        else:
+            messages.error(request, 'Failed to add song. Please ensure the form is valid before submitting')
+            print('failed')
+    else:
+        form = AddSongForm()
 
-    form = AddSongForm()
     context = {
         'form': form
     }

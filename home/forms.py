@@ -14,4 +14,5 @@ class AddSongForm(forms.ModelForm):
             'duration': 'Duration',
             'audio_file': 'Audio File',
             'audio_link': 'Audio Link',
+            'paginate_by': 'Paginate by',
         }

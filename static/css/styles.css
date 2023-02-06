@@ -11563,3 +11563,12 @@ hr {
   width: 100%;
 }
 
+.audio-file-input {
+  padding-left: 0 !important;
+}
+
+.upload-btn {
+  background: #081333;
+  border: solid 1px white;
+  color: white;
+}

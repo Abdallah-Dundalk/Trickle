@@ -8,7 +8,5 @@ app_name = "home"
 
 urlpatterns = [
     path('', views.index, name='home'),
-    path('add_music', views.add_music_page, name='add_music_page'),
-    path('play_song/<song_id>/', views.get_play_song_page, name='get_play_song_page'),
-
+  
 ]
