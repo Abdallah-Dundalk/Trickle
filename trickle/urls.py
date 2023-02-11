@@ -28,11 +28,6 @@ urlpatterns = [
     path('play_song/<song_id>/', views.get_play_song_page,
          name='get_play_song_page'),
     path('add/', views.add_music, name='add_music'),
-    path('stripe/', include("djstripe.urls", namespace='djstripe')),
-    path('checkout', include('checkout.urls')),
-    path("create-sub", views.create_sub, name="create sub"), #add
-    path("complete", views.complete, name="complete"), #add
-
 ]
 
 urlpatterns += staticfiles_urlpatterns()
