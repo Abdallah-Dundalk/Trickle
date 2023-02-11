@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'checkout',
+    'djstripe',
 ]
 
 MIDDLEWARE = [
@@ -187,3 +188,10 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+
+STRIPE_TEST_PUBLIC_KEY = 'pk_test_51MXpnoIu94X7WsTedWBojclRuMerlwKpdOouNeaLcSf4YSQczJxcgHyYgDAy0lmydVgBTNP2OdvZSHexjAN6rxgh00bGhJsv0e'
+STRIPE_TEST_SECRET_KEY = 'sk_test_51MXpnoIu94X7WsTeoHms4vfcXWoEwB5ioy42rCTTwEvgkhM2dDlYjXN4YmgAlb4UziTzpkKwGazZTYzXIneaqmKI00NRP7tsMy'
+STRIPE_LIVE_MODE = False  # Change to True in production
+DJSTRIPE_WEBHOOK_SECRET = "whsec_xxx"
+DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
