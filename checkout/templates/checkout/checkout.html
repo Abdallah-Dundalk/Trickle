@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Content section-->
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{message}}</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+<form method="POST" action="checkout" id="payment-form">
+  {% csrf_token %}
+  <fieldset>
+    <legend>Details</legend>
+    {{ order_form.full_name | as_crispy_field }}
+    {{ order_form.email | as_crispy_field }}
+  </fieldset>
+  <fieldset>
+    <legend>Address</legend>
+    {{ order_form.phone_number | as_crispy_field }}
+    {{ order_form.country | as_crispy_field }}
+    {{ order_form.town_or_city | as_crispy_field }}
+    {{ order_form.street_address1 | as_crispy_field }}
+    {{ order_form.street_address2 | as_crispy_field }}
+    
+  </fieldset>
+  <fieldset>
+    <legend>Payment Info</legend>
+    <!-- stripe card element goes here -->
+    <div id="card-element"></div>
+
+    <!-- used to display error messages -->
+    <div id="card-errors" role="alert"></div>
+  </fieldset>
+  {{ form.as_p}}
+  <div class="row">
+    <button id="submit-button" class="btn upload-btn my-3 col-4 offset-4" type="submit" >Upload</button>
+  </div>
+  <p class="small text-danger">
+    <span class="icon">
+        <i class="fas fa-exclamation-circle"></i>
+    </span>
+    <span>Your card will be charged <strong>${{ order_total|floatformat:2 }}</strong></span>
+  </p>
+</form>
+
+
+
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div ><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+</footer>
+
+{% endblock %}

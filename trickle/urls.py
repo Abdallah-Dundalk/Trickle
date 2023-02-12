@@ -28,6 +28,7 @@ urlpatterns = [
     path('play_song/<song_id>/', views.get_play_song_page,
          name='get_play_song_page'),
     path('add/', views.add_music, name='add_music'),
+    path('checkout/', include('checkout.urls'))
 ]
 
 urlpatterns += staticfiles_urlpatterns()
