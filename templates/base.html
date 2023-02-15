@@ -62,7 +62,7 @@
               {% if request.user.is_authenticated %}
               <li class="nav-item"><a class="nav-link" href="#!">My Account</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Log Out</a></li>
-              <li class="nav-item"><a class="nav-link" href="{% url 'checkout' %}">Subscribe</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'membership_options' %}">Subscribe</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'view_bag' %}">View Bag</a></li>
               {% else %}
               <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Register</a></li>
