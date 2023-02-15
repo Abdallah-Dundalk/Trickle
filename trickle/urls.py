@@ -31,6 +31,7 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
     path('bag/', include('bag.urls')),
+    path('membership_options/', include('membership_options.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

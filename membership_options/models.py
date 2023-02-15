@@ -8,5 +8,8 @@ class MembershipOptions(models.Model):
     description = models.TextField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=2)
 
+    class Meta:
+        verbose_name_plural = 'Membership Options'
+
     def __str__(self):
         return self.name
