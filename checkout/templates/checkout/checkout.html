@@ -40,7 +40,7 @@
       {% endfor %}
   </div>
 
-<form method="POST" action="checkout" id="payment-form">
+<form method="POST" action="" id="payment-form">
   {% csrf_token %}
   <fieldset>
     <legend>Details</legend>
@@ -66,7 +66,7 @@
   </fieldset>
   {{ form.as_p}}
   <div class="row">
-    <button id="submit-button" class="btn upload-btn my-3 col-4 offset-4" type="submit">Upload</button>
+    <button id="submit-button" class="btn upload-btn my-3 col-4 offset-4" type="submit">Confirm Purchase</button>
   </div>
   <p class="small text-danger">
     <span class="icon">
