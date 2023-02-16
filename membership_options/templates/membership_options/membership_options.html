@@ -13,13 +13,14 @@
                     <div class="card-body">
                         <h5 class="card-title">{{option.name}}</h5>
                         <p class="card-text">{{option.description}}.</p>
+                        <p class="card-text text-danger">Only €{{option.price}}</p>
                         <form class="form" action="{% url 'add_to_bag' option.id %}" method="POST">
                             {% csrf_token %}
                             <div class="form-row">
                                 <div class="col-12">
-                                    <p class="mt-3"><strong>Quantity:</strong></p>
+                                    
                                     <div class="form-group w-50">
-                                        <div class="input-group">
+                                        <div class="input-group d-none">
                                             <input class="form-control qty_input" type="number" name="quantity"
                                                 value="1" min="1" max="1" data-item_id="{{ option.id }}"
                                                 id="id_qty_{{ option.id }}">
@@ -28,13 +29,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <a href="{% url 'membership_options' %}"
-                                        class="btn btn-outline-black rounded-0 mt-5">
-                                        <span class="icon">
-                                            <i class="fas fa-chevron-left"></i>
-                                        </span>
-                                        <span class="text-uppercase">Membership Options</span>
-                                    </a>
+                                    
                                     <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5"
                                         value="Buy Now">
                                 </div>

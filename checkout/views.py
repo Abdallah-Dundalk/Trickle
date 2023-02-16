@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from membership_options.models import MembershipOptions
 
 from .forms import OrderForm
 
@@ -11,7 +12,6 @@ def checkout(request):
     if not bag:
         messages.error(request, "Theres nothing in your bag at present")
         return redirect(reverse('membership_options'))
-
     order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = {

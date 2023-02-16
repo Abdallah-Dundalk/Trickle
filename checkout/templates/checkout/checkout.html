@@ -7,12 +7,38 @@
 
 {% block content %}
 <!-- Content section-->
+<div class="music-player-container">
 {% for message in messages %}
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>{{message}}</strong> 
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% endfor %}
+
+
+
+  <div class="row">
+      {% for item in bag_items %}
+  
+      <div class="col-4 offset-4 mt-5">
+          <div class="row">
+              <div class="card text-center">
+                  <div class="card-body">
+                      <h5 class="card-title">You have selected</h5>
+                      <h5 class="card-title text-danger">{{item.membership_option.name}}</h5>
+                      <h5 class="card-title">for purchase</h5>
+                      <p class="card-text">{{item.membership_option.description}}.</p>
+                      <p class="card-text text-danger">You will be charged €{{item.membership_option.price}}.</p>
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-1"></div>
+
+
+      {% endfor %}
+  </div>
 
 <form method="POST" action="checkout" id="payment-form">
   {% csrf_token %}
@@ -28,7 +54,7 @@
     {{ order_form.town_or_city | as_crispy_field }}
     {{ order_form.street_address1 | as_crispy_field }}
     {{ order_form.street_address2 | as_crispy_field }}
-    
+
   </fieldset>
   <fieldset>
     <legend>Payment Info</legend>
@@ -40,28 +66,30 @@
   </fieldset>
   {{ form.as_p}}
   <div class="row">
-    <button id="submit-button" class="btn upload-btn my-3 col-4 offset-4" type="submit" >Upload</button>
+    <button id="submit-button" class="btn upload-btn my-3 col-4 offset-4" type="submit">Upload</button>
   </div>
   <p class="small text-danger">
     <span class="icon">
-        <i class="fas fa-exclamation-circle"></i>
+      <i class="fas fa-exclamation-circle"></i>
     </span>
     <span>Your card will be charged <strong>${{ order_total|floatformat:2 }}</strong></span>
   </p>
 </form>
-
+</div>
 
 
 <!-- Footer-->
 <footer class="py-5 bg-dark">
-    <div ><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+  <div>
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
+  </div>
 </footer>
 
 {% endblock %}
 
 {% block postloadjs %}
-  {{ block.super }}
-  {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-  {{ client_secret_key|json_script:"id_client_secret_key" }}
-  <script src="{% static 'checkout/js/stripe_elements.js' %}" ></script>
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret_key|json_script:"id_client_secret_key" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
