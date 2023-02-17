@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.db.models import Sum
 from django.conf import settings
 from profiles.models import UserProfile
 from membership_options.models import MembershipOptions
@@ -27,8 +28,8 @@ class Order(models.Model):
         """
         return uuid.uuid4().hex.upper()
 
-    def calculate_order_total(self):
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+    def update_total(self):
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
         self.save()
 
     def save(self, *args, **kwargs):

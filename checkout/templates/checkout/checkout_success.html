@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Content section-->
+<div class="music-player-container">
+{% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+{% for item in order.lineitems.all  %}
+    <div class="col-4 offset-4 mt-5">
+        <div class="row">
+            <div class="card text-center mb-5">
+                <div class="card-body">
+                    <h5 class="card-title text-success">Success!</h5>
+                    <h5 class="card-title text-success">You have purchased {{item.membership_options.name}}</h5>
+                    <p class="card-text text-success">This gives you{{item.membership_options.description}}.</p>
+                    <p class="card-text text-success">You have been charged €{{item.membership_options.price}}.</p>
+                    <a href="{% url 'home' %}" class="btn btn-primary">Access Music</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+  <div>
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
+  </div>
+</footer>
+
+{% endblock %}
