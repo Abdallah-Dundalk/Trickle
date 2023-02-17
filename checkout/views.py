@@ -30,7 +30,6 @@ def checkout(request):
         if order_form.is_valid():
             order = order_form.save()
             print(bag)
-            print("fuck")
             for item_id, item_data in bag.items():
                 try:
                     membership_options = MembershipOptions.objects.get(id=item_id)
@@ -90,6 +89,7 @@ def checkout_success(request, order_number):
     """ Handles successful checkouts """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
+    membership_options = MembershipOptions.objects.all().order_by('pk').values()
     messages.success(request, f'Success! Your membership has been purchased! \
         Your order number is {order_number}')
 
