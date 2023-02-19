@@ -47,8 +47,11 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save()
-            print(bag)
+            order = order_form.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_bag = json.dumps(bag)
+            order.save()
             for item_id, item_data in bag.items():
                 try:
                     membership_options = MembershipOptions.objects.get(id=item_id)
@@ -98,7 +101,7 @@ def checkout(request):
     context = {
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
-        'client_secret_key': intent.client_secret,
+        'client_secret': intent.client_secret,
     }
 
     return render(request, template, context)
