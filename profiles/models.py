@@ -7,7 +7,7 @@ from django_countries.fields import CountryField
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
     default_full_name = models.CharField(max_length=50, null=True,
                                          blank=True)
     default_email = models.EmailField(max_length=254, null=True, blank=True)
@@ -21,7 +21,7 @@ class UserProfile(models.Model):
                                                blank=True)
     default_street_address2 = models.CharField(max_length=80, null=True,
                                                blank=True)
-    default_subscription_status = models.BooleanField(default=False, null=True)
+    subscription_expiration_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return self.user.username
