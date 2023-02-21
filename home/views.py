@@ -20,12 +20,13 @@ from django.contrib.auth.models import Group
 def index(request):
     """A view to return all songs on index page"""
     songs = Song.objects.all()
-    pk = request.user.id
-    user_profile = get_object_or_404(UserProfile, pk=pk)
-    if user_profile.subscription_expiration_date < datetime.now().date():
-        group = Group.objects.get(name='subscribed')
-        user = request.user
-        user.groups.remove(group)
+    if request.user.is_authenticated:
+        pk = request.user.id
+        user_profile = get_object_or_404(UserProfile, pk=pk)
+        if user_profile.subscription_expiration_date < datetime.now().date():
+            group = Group.objects.get(name='subscribed')
+            user = request.user
+            user.groups.remove(group)
 
     context = {
         'songs': songs,
