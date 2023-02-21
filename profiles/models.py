@@ -22,7 +22,10 @@ class UserProfile(models.Model):
                                                blank=True)
     default_street_address2 = models.CharField(max_length=80, null=True,
                                                blank=True)
-    subscription_expiration_date = models.DateField(null=True, blank=True)
+    subscription_expiration_date = models.DateField(null=True,
+                                                    blank=True)
+    subscription_date = models.DateField(null=True,
+                                         blank=True)
 
     def __str__(self):
         return self.user.username + f'{self.id}'

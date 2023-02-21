@@ -11321,7 +11321,7 @@ html {
 .music-player-container {
   display: block;
   width: 100%;
-  height: auto;
+  height: 800px;
   
   margin: auto;
   overflow: hidden;

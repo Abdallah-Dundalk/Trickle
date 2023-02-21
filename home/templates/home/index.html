@@ -6,7 +6,15 @@
 <!-- Content section-->
     {% if user.is_authenticated %}
           {% for group in request.user.groups.all %} 
-              {% if group.name == 'subscribed' %}  
+              {% if group.name == 'subscribed' %} 
+              <form action="" method="GET" >
+                <input type="text" name="q" placeholder="Search music" class="my-3 col-4 offset-4">
+                              
+                <div class="row">
+                  <button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4" type="submit" >Search</button>
+                </div>
+              </form> 
+              
                   {% for song in songs %}
 
                       <div class="col-12 song-container bg-dark">
@@ -141,7 +149,7 @@
     {% endif %}
    
 <!-- Footer-->
-<footer class="py-5 bg-dark">
+<footer class="py-5 bg-dark fixed-bottom">
     <div ><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
 </footer>
 

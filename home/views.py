@@ -1,6 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
-
-# Create your views here.
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.core.paginator import Paginator
 from . models import Song
 from profiles.models import UserProfile
@@ -8,6 +6,8 @@ from . forms import AddSongForm
 from django.contrib import messages
 from datetime import datetime, timedelta
 from django.contrib.auth.models import Group
+from django.db.models import Q
+
 # def index(request):
 #     """ A view to return the index page"""
 #     paginator = Paginator(Song.objects.all(), 1)
@@ -20,6 +20,8 @@ from django.contrib.auth.models import Group
 def index(request):
     """A view to return all songs on index page"""
     songs = Song.objects.all()
+    query = None
+
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)    
         if profile.subscription_expiration_date is None:
@@ -31,8 +33,18 @@ def index(request):
             user = request.user
             user.groups.remove(group)
 
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "Please enter a search term...")
+                return (redirect('home'))
+            queries = Q(title__icontains=query) | Q(artist__icontains=query)
+            songs = songs.filter(queries)
+
     context = {
         'songs': songs,
+        'search_term': query,
     }
 
     return render(request, 'home/index.html', context)
