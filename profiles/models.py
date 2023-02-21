@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from django_countries.fields import CountryField
+import datetime
 
 
 class UserProfile(models.Model):
@@ -26,6 +27,12 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+    def subscription_check(self):
+        if self.subscription_expiration_date < datetime.now().date():
+            group = Group.objects.get(name='subscribed')
+            user = request.user
+            user.groups.remove(group)
+
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
@@ -35,4 +42,4 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
     # If user already exists, save the profile
-    instance.userprofile.save()
+    instance.user_profile.save()

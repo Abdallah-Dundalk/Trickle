@@ -3,8 +3,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 # Create your views here.
 from django.core.paginator import Paginator
 from . models import Song
+from profiles.models import UserProfile
 from . forms import AddSongForm
 from django.contrib import messages
+from datetime import datetime, timedelta
+from django.contrib.auth.models import Group
 # def index(request):
 #     """ A view to return the index page"""
 #     paginator = Paginator(Song.objects.all(), 1)
@@ -17,6 +20,12 @@ from django.contrib import messages
 def index(request):
     """A view to return all songs on index page"""
     songs = Song.objects.all()
+    pk = request.user.id
+    user_profile = get_object_or_404(UserProfile, pk=pk)
+    if user_profile.subscription_expiration_date < datetime.now().date():
+        group = Group.objects.get(name='subscribed')
+        user = request.user
+        user.groups.remove(group)
 
     context = {
         'songs': songs,

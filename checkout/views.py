@@ -120,15 +120,10 @@ def checkout_success(request, order_number):
     user = request.user
     user.groups.add(group)
 
-    # default_full_name = request.user.user_profile.default_full_name
-    # default_full_name = "mad max"
-    # request.user.user_profile.save()
-    
     pk = request.user.id
     user_profile = get_object_or_404(UserProfile, pk=pk)
-    # user_profile.default_full_name = "Mad Max"
     print(user_profile.default_full_name)
-    user_profile.subscription_expiration_date = datetime.now().date()
+    user_profile.subscription_expiration_date = datetime.now().date() + timedelta(days=30)
     user_profile.save()
     
     messages.success(request, f'Success! Your membership has been purchased! \
