@@ -115,16 +115,19 @@ def checkout_success(request, order_number):
     """ Handles successful checkouts """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    membership_options = MembershipOptions.objects.all().order_by('pk').values()
+    # membership_options = MembershipOptions.objects.all().order_by('pk').values()
     group = Group.objects.get(name='subscribed')
     user = request.user
     user.groups.add(group)
-
-    pk = request.user.id
-    user_profile = get_object_or_404(UserProfile, pk=pk)
-    print(user_profile.default_full_name)
-    user_profile.subscription_expiration_date = datetime.now().date() + timedelta(days=30)
-    user_profile.save()
+    profile = UserProfile.objects.get(user=request.user)
+    # Attach the user's profile to the order
+    order.user_profile = profile
+    order.save()
+    # pk = request.user.id
+    # user_profile = get_object_or_404(UserProfile, pk=pk)
+    # print(user_profile.default_full_name)
+    profile.subscription_expiration_date = datetime.now().date() + timedelta(days=30)
+    profile.save()
     
     messages.success(request, f'Success! Your membership has been purchased! \
         Your order number is {order_number}')

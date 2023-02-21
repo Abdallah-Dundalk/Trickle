@@ -25,7 +25,7 @@ class UserProfile(models.Model):
     subscription_expiration_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
-        return self.user.username
+        return self.user.username + f'{self.id}'
 
     def subscription_check(self):
         if self.subscription_expiration_date < datetime.now().date():
