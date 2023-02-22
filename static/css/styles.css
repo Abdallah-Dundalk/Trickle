@@ -11573,3 +11573,7 @@ hr {
   border: solid 1px white;
   color: white;
 }
+
+header {
+  height: 200px;
+}
