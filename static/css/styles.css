@@ -11577,3 +11577,7 @@ hr {
 header {
   height: 200px;
 }
+
+.fa-surprise {
+  color: white !important;
+}
