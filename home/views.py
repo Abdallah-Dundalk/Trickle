@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.core.paginator import Paginator
-from . models import Song
+from . models import Song, Playlist
 from profiles.models import UserProfile
 from . forms import AddSongForm
 from django.contrib import messages
@@ -79,3 +79,23 @@ def add_music(request):
     }
 
     return render(request, 'home/add_music.html', context)
+
+
+def playlists(request):
+    playlists = Playlist.objects.all()
+    template = 'home/playlists.html'
+    context = {
+        "playlists": playlists
+    }
+
+    return render(request, template, context)
+
+
+def playlist_songs(request, playlist_id):
+    playlist_songs = Song.objects.all().filter(playlist=playlist_id)
+    template = 'home/playlist_songs.html'
+    context = {
+        "playlist_songs": playlist_songs
+    }
+
+    return render(request, template, context)
