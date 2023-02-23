@@ -2,11 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.core.paginator import Paginator
 from . models import Song, Playlist
 from profiles.models import UserProfile
-from . forms import AddSongForm
+from . forms import AddSongForm, AddPlaylistForm
 from django.contrib import messages
 from datetime import datetime, timedelta
 from django.contrib.auth.models import Group
 from django.db.models import Q
+from django import forms
+from django.db.models import fields
+from django.forms import ModelForm
+
 
 # def index(request):
 #     """ A view to return the index page"""
@@ -129,3 +133,28 @@ def edit_playlist(request, song_id):
         'song': song
     }
     return render(request, template, context)
+
+
+def add_playlist(request):
+
+    template = 'home/add_playlist.html'
+    if request.method == 'POST':
+        form = AddPlaylistForm(request.POST)
+       
+        print("start")
+        if form.is_valid():
+            new_form = form.save(commit=False)
+            # Attach the user's profile to the order
+            new_form.user = request.user
+            print(new_form.user)
+            new_form.save()
+            print("saved")
+            messages.success(request, 'Play list updated...')
+            return redirect('home')
+    form = AddPlaylistForm()
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)
+
+    

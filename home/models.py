@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 
 
 class Playlist(models.Model):
-    playlist_name = models.CharField(max_length=50, blank=True, null=True, default='')
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    playlist_name = models.CharField(max_length=50, blank=False, null=False, default='')
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=True, null=True)
 
     def __str__(self):
         return self.playlist_name

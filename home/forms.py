@@ -1,5 +1,5 @@
 from django import forms
-from .models import Song
+from .models import Song, Playlist
 
 
 class AddSongForm(forms.ModelForm):
@@ -16,4 +16,15 @@ class AddSongForm(forms.ModelForm):
             'audio_link': 'Audio Link',
             'paginate_by': 'Paginate by',
             'playlist': 'Playlist',
+        }
+
+
+class AddPlaylistForm(forms.ModelForm):
+    class Meta:
+        model = Playlist
+        fields = ['playlist_name']
+
+        labels = {
+            'playlist_name': 'Playlist Name',
+            'user': 'User',
         }
