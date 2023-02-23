@@ -46,14 +46,14 @@
   </div>
 </div>
 <hr>
-<form method="POST" action="" enctype="multipart/form-data">
+<form method="POST" action="/add_song_to_playlist/{{song.id}}/" enctype="multipart/form-data">
   {% csrf_token %}
   
 
   <div class="col-4 offset-4">
-    <div>{{form.playlist.label_tag}}</div>
+    <div>{{form.title.label_tag}}</div>
     <div class="row">
-      {{form.playlist_name}}
+      {{form.playlist}}
     </div>
   </div>
   <div class="row">

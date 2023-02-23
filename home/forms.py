@@ -19,6 +19,16 @@ class AddSongForm(forms.ModelForm):
         }
 
 
+class AddSongToPlayListForm(forms.ModelForm):
+    class Meta:
+        model = Song
+        fields = ['playlist']
+
+        labels = {
+            'playlist': 'Playlist',
+        }
+
+
 class AddPlaylistForm(forms.ModelForm):
     class Meta:
         model = Playlist

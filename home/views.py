@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.core.paginator import Paginator
 from . models import Song, Playlist
 from profiles.models import UserProfile
-from . forms import AddSongForm, AddPlaylistForm
+from . forms import AddSongForm, AddPlaylistForm, AddSongToPlayListForm
 from django.contrib import messages
 from datetime import datetime, timedelta
 from django.contrib.auth.models import Group
@@ -116,21 +116,21 @@ def playlist_songs(request, playlist_id):
 #         return render(request, template, context)
 
 
-def edit_playlist(request, song_id):
-    song = get_object_or_404(Song, id=song_id)
+def edit_playlist(request, playlist_id):
+    playlist = get_object_or_404(Playlist, id=playlist_id)
     template = 'home/edit_playlist.html'
     if request.method == 'POST':
-        form = AddSongForm(request.POST, instance=song)
+        form = AddPlaylistForm(request.POST, instance=playlist)
         print("start")
         if form.is_valid():
             form.save()
             print("saved")
             messages.success(request, 'Play list updated...')
             return redirect('home')
-    form = AddSongForm(instance=song)
+    form = AddPlaylistForm(instance=playlist)
     context = {
         'form': form,
-        'song': song
+        'playlist': playlist,
     }
     return render(request, template, context)
 
@@ -157,4 +157,21 @@ def add_playlist(request):
     }
     return render(request, template, context)
 
-    
+
+def add_song_to_playlist(request, song_id):
+    song = get_object_or_404(Song, id=song_id)
+    template = 'home/add_song_to_playlist.html'
+    if request.method == 'POST':
+        form = AddSongToPlayListForm(request.POST, instance=song)
+        print("start")
+        if form.is_valid():
+            form.save()
+            print("saved")
+            messages.success(request, 'Song added to playlist...')
+            return redirect('home')
+    form = AddSongToPlayListForm(instance=song)
+    context = {
+        'form': form,
+        'song': song,
+    }
+    return render(request, template, context)   
