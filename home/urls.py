@@ -8,6 +8,7 @@ app_name = "home"
 
 urlpatterns = [
     path('', views.index, name='home'),
-    path('playlists', views.playlists, name='playlists'),
-    path('playlist_songs/<int:playlist_id>', views.playlist_songs, name='playlist_songs')
+    path('playlists/', views.playlists, name='playlists'),
+    path('playlist_songs/<int:playlist_id>/', views.playlist_songs, name='playlist_songs'),
+    path('edit_playlist/<int:song_id>/', views.edit_playlist, name='edit_playlist')
 ]
