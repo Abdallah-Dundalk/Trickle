@@ -118,13 +118,31 @@ def edit_playlist(request, playlist_id):
             form.save()
             print("saved")
             messages.success(request, 'Play list updated...')
-            return redirect('/playlists')
+            return redirect('playlists')
     form = AddPlaylistForm(instance=playlist)
     context = {
         'form': form,
         'playlist': playlist,
     }
     return render(request, template, context)
+
+
+def delete_playlist(request, playlist_id):
+    playlist = get_object_or_404(Playlist, id=playlist_id)
+    if request.method == 'POST' and 'delete-btn' in request.POST:
+        playlist.delete()
+        print("deleted")
+        messages.success(request, 'Playlist deleted.')
+        return redirect('playlists')
+    elif request.method == 'POST' and 'cancel-btn' in request.POST:
+        print("cancelled")
+        messages.success(request, 'Playlist not deleted.')
+        return redirect('playlists')
+    form = AddPlaylistForm(instance=playlist)
+    context = {
+        'playlist': playlist
+    }
+    return render(request, 'home/delete_playlist.html', context)
 
 
 def add_playlist(request):

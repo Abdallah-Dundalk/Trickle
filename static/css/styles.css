@@ -11581,3 +11581,12 @@ header {
 .fa-surprise {
   color: white !important;
 }
+
+/* Mailchimp css */
+#mc_embed_signup{
+  background:#34383c;
+  clear:left; 
+  font:14px Helvetica,Arial,sans-serif;
+  color: white;  
+  width:600px;
+}

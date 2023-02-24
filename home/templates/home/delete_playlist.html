@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ 
+<!-- Content section-->
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>{{message}}</strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+
+<div class="col-12 song-container bg-dark">
+  <div class="row">
+    <div class="col-1 blank-space">
+      <div class="row">
+      </div>
+    </div>
+    
+    <div class="col-4 col-lg-2 song-image ms-5 mt-5 mb-5">
+      <div class="row">
+      <a href="play_song/{{song.id}}">
+        <img src="{{song.image.url}}" alt="">
+      </a>
+          
+        
+      </div>
+    </div>
+
+    <div class="col-4 col-lg-2 song-info mt-5 text-center pt-4">
+      <div class="row">
+        <h4>Playlist: {{playlist.playlist_name}}</h4>
+      </div>
+      <div class="row">
+        <h6>Performed By: {{playlist.song}}</h6>
+      </div>
+      
+      
+    </div>
+    <div class="col-4 col-lg-8 blank-space">
+      <div class="row">
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<form method="POST" action="" enctype="multipart/form-data">
+  {% csrf_token %}
+  
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10 text-center mt-5">
+        <p>Are you sure you want to delete {{playlist.playlist_name}} playlist? This action cannot be undone.</p>
+    </div>
+
+  <div class="col-4 offset-4">
+    <div>{{form.playlist.label_tag}}</div>
+    <div class="row">
+      {{form.playlist_name}}
+    </div>
+  </div>
+  
+  <div class="row">
+    <button id="form-submit-btn" class="btn btn-danger my-3 col-4 offset-4" type="submit" name="delete-btn" >Delete</button>
+  </div>
+  <div class="row">
+    <button id="form-submit-btn" class="btn btn-success my-3 col-4 offset-4" type="submit" name="cancel-btn" >Cancel</button>
+  </div>
+  
+</form>
+
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div ><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+</footer>
+
+{% endblock %}
+

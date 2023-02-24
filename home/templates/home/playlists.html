@@ -2,7 +2,13 @@
 {% load static %}
 
 {% block content %}
-
+<div class="col-4 offset-4 mt-5 mb-5">
+    <div class="row">
+        <div class="row">
+            <a href="/add_playlist" class="btn upload-btn">Add Playlist</a>
+        </div>  
+    </div>
+</div>
     {% for playlist in playlists %}
 
         <div class="col-12 song-container bg-dark">
@@ -18,9 +24,11 @@
                 <h1>{{ playlist.playlist_name }}</h1>
             </a>
             <div class="row">
-                <a href="/edit_playlist/{{playlist.id}}" class="btn btn-warning">Edit</a>
+                <a href="/edit_playlist/{{playlist.id}}" class="btn btn-warning">Edit Playlist Name</a>
             </div>  
-                
+            <div class="row">
+                <a href="/delete_playlist/{{playlist.id}}" class="btn btn-danger">Delete Playlist</a>
+            </div>   
             </div>
             </div>
 

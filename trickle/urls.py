@@ -32,6 +32,12 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     path('bag/', include('bag.urls')),
     path('membership_options/', include('membership_options.urls')),
+    path('playlists/', views.playlists, name='playlists'),
+    path('playlist_songs/<int:playlist_id>/', views.playlist_songs, name='playlist_songs'),
+    path('edit_playlist/<int:playlist_id>/', views.edit_playlist, name='edit_playlist'),
+    path('delete_playlist/<int:playlist_id>/', views.delete_playlist, name='delete_playlist'),
+    path('add_playlist/', views.add_playlist, name='add_playlist'),
+    path('add_song_to_playlist/<int:song_id>/', views.add_song_to_playlist, name='add_song_to_playlist'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
