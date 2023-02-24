@@ -8,12 +8,7 @@
 {% block content %}
 <!-- Content section-->
 <div class="music-player-container">
-{% for message in messages %}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>{{message}}</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-{% endfor %}
+
 
 {% for item in order.lineitems.all  %}
     <div class="col-4 offset-4 mt-5">
