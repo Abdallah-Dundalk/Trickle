@@ -11590,3 +11590,7 @@ header {
   color: white;  
   width:600px;
 }
+
+.login-status {
+  background-color: #212529;
+}

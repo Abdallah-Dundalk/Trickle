@@ -49,7 +49,7 @@
       <!-- Responsive navbar-->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         
-          <a class="navbar-brand" href="#!">Trickle</a>
+          <a class="navbar-brand" href="{% url 'home' %}">Trickle</a>
           <img src="{% static 'svgs/logo_1.svg' %}">
 
 
@@ -73,6 +73,13 @@
           </div>
         </div>
       </nav>
+      <div class="col login-status text-warning">
+        <div class="row text-end me-5 pb-2">
+          {% if request.user.is_authenticated %}
+            <span>Logged in as {{user.username}}</span>
+          {% endif %}
+        </div>
+      </div>
       <!-- Header - set the background image for the header in the line below-->
       <header class="py-5 bg-image-full"
         style="background-image: url('https://res.cloudinary.com/da7esyqo0/image/upload/v1675453930/digital_water_sii48l.jpg')">
