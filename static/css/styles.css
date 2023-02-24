@@ -11584,13 +11584,15 @@ header {
 
 /* Mailchimp css */
 #mc_embed_signup{
-  background:#34383c;
   clear:left; 
-  font:14px Helvetica,Arial,sans-serif;
+  font: 14px system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   color: white;  
-  width:600px;
 }
 
 .login-status {
   background-color: #212529;
+}
+
+.trickle-grey {
+  background-color:#34383c;
 }
