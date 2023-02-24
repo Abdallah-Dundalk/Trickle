@@ -4,14 +4,6 @@
 {% block content %}
  
 <!-- Content section-->
-{% for message in messages %}
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>{{message}}</strong> 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-{% endfor %}
-
-
 <div class="col-12 song-container bg-dark">
   <div class="row">
     <div class="col-1 blank-space">
@@ -50,8 +42,8 @@
   {% csrf_token %}
   
 
-  <div class="col-4 offset-4">
-    <div>{{form.title.label_tag}}</div>
+  <div class="col-4 offset-4 ">
+    <div class="d-flex justify-content-center">Select Playlist</div>
     <div class="row">
       {{form.playlist}}
     </div>

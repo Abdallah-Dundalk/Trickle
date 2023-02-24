@@ -10,6 +10,7 @@ from django.db.models import Q
 from django import forms
 from django.db.models import fields
 from django.forms import ModelForm
+from django.contrib.auth.decorators import login_required
 
 
 # def index(request):
@@ -27,7 +28,7 @@ def index(request):
     query = None
 
     if request.user.is_authenticated:
-        profile = UserProfile.objects.get(user=request.user)    
+        profile = UserProfile.objects.get(user=request.user)
         if profile.subscription_expiration_date is None:
             group = Group.objects.get(name='subscribed')
             user = request.user
@@ -73,7 +74,8 @@ def add_music(request):
             messages.success(request, 'Music successfully added')
             return redirect('add_music')
         else:
-            messages.error(request, 'Failed to add song. Please ensure the form is valid before submitting')
+            messages.error(request, 'Failed to add song. Please ensure the \
+                           form is valid before submitting')
             print('failed')
     else:
         form = AddSongForm()
@@ -85,8 +87,9 @@ def add_music(request):
     return render(request, 'home/add_music.html', context)
 
 
+@login_required
 def playlists(request):
-    playlists = Playlist.objects.all()
+    playlists = Playlist.objects.all().filter(user=request.user)
     template = 'home/playlists.html'
     context = {
         "playlists": playlists
@@ -105,17 +108,6 @@ def playlist_songs(request, playlist_id):
     return render(request, template, context)
 
 
-# def playlist_songs(request, user, playlist_id):
-#     if request.user.is_authenticated:
-#         playlist_songs = Song.objects.all().filter(user=request.user, playlist=playlist_id)
-#         template = 'home/playlist_songs.html'
-#         context = {
-#             "playlist_songs": playlist_songs
-#         }
-
-#         return render(request, template, context)
-
-
 def edit_playlist(request, playlist_id):
     playlist = get_object_or_404(Playlist, id=playlist_id)
     template = 'home/edit_playlist.html'
@@ -126,7 +118,7 @@ def edit_playlist(request, playlist_id):
             form.save()
             print("saved")
             messages.success(request, 'Play list updated...')
-            return redirect('home')
+            return redirect('/playlists')
     form = AddPlaylistForm(instance=playlist)
     context = {
         'form': form,
@@ -140,7 +132,6 @@ def add_playlist(request):
     template = 'home/add_playlist.html'
     if request.method == 'POST':
         form = AddPlaylistForm(request.POST)
-       
         print("start")
         if form.is_valid():
             new_form = form.save(commit=False)
@@ -149,8 +140,8 @@ def add_playlist(request):
             print(new_form.user)
             new_form.save()
             print("saved")
-            messages.success(request, 'Play list updated...')
-            return redirect('home')
+            messages.success(request, 'Play list created...')
+            return redirect('/playlists')
     form = AddPlaylistForm()
     context = {
         'form': form,
@@ -167,11 +158,11 @@ def add_song_to_playlist(request, song_id):
         if form.is_valid():
             form.save()
             print("saved")
-            messages.success(request, 'Song added to playlist...')
+            messages.success(request,  "Song added to playlist...")
             return redirect('home')
     form = AddSongToPlayListForm(instance=song)
     context = {
         'form': form,
         'song': song,
     }
-    return render(request, template, context)   
+    return render(request, template, context)
