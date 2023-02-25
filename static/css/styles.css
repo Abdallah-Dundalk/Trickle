@@ -11295,16 +11295,6 @@ textarea.form-control-lg {
 
 /* Code for music player. This code is by Chukslord and can be found here  https://gist.github.com/Chukslord1/f65093cd9b16fff56e68903259887299 ------*/
 
-/* *:focus{
-  outline: none;
-}
-html {
-  background: #f2f2f2;
-} */
-/* body {
-  margin: 0;
-  font-family: "Raleway",sans-serif;
-} */
 .music-player h1 {
   margin: 0;
   font-size: 33px;
@@ -11321,7 +11311,7 @@ html {
 .music-player-container {
   display: block;
   width: 100%;
-  height: 1000px;
+  height: auto;
   
   margin: auto;
   overflow: hidden;
@@ -11595,4 +11585,16 @@ header {
 
 .trickle-grey {
   background-color:#34383c;
+}
+
+.membership-section {
+  display: block;
+  width: 100%;
+  height: 400px;
+  
+  margin: auto;
+  overflow: hidden;
+  background-image: url("https://res.cloudinary.com/da7esyqo0/image/upload/v1675555920/wallpaperflare.com_wallpaper_v22xmu.jpg");
+  background-repeat: repeat-x;
+  background-size: cover;
 }
