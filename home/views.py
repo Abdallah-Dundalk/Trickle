@@ -12,6 +12,7 @@ from django import forms
 from django.db.models import fields
 from django.forms import ModelForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
 # def index(request):
@@ -25,9 +26,12 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     """A view to return all songs on index page"""
-    songs = Song.objects.all()
+    songs = Song.objects.all().order_by('pk').values()
     query = None
     membership_options = MembershipOptions.objects.all().order_by('pk').values()
+    paginator = Paginator(songs, 5) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -49,10 +53,12 @@ def index(request):
             queries = Q(title__icontains=query) | Q(artist__icontains=query)
             songs = songs.filter(queries)
 
+
     context = {
         'songs': songs,
         'search_term': query,
         'membership_options': membership_options,
+        'page_obj': page_obj,
     }
 
     return render(request, 'home/index.html', context)

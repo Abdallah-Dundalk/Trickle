@@ -14,8 +14,14 @@
                   <button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4" type="submit" >Search</button>
                 </div>
               </form> 
-              
-                  {% for song in songs %}
+              {% for song in page_obj %}
+                  {# Each "contact" is a Contact model object. #}
+                  {{ song.title|upper }}<br>
+                  
+              {% endfor %}
+
+
+                  <!-- {% for song in songs %}
 
                       <div class="col-12 song-container bg-dark">
                         <div class="row">
@@ -53,7 +59,7 @@
                         </div>
                       </div>
                       <hr>
-                  {% endfor %}
+                  {% endfor %} -->
               {% endif %}
           {% empty %}
          
