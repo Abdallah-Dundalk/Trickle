@@ -11598,3 +11598,30 @@ header {
   background-repeat: repeat-x;
   background-size: cover;
 }
+
+.song-picture {
+  height: auto;
+  width: 20%;
+
+}
+
+.bg-custom {
+  background: rgba(0, 0, 0, 0.3)
+}
+
+.btn-position {
+  font-size: 12px !important; 
+}
+
+.upload-btn:hover {
+  background: white;
+  color: black;
+  border-color: black;
+}
+
+.paginator-btn {
+  color: rgba(255, 255, 255, .55);
+  background-color: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  border-color: rgba(255, 255, 255, .55);;
+}

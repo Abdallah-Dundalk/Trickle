@@ -110,60 +110,22 @@
       {% block content %}
 
       {% endblock %}
-      <div class="justify-content-center">
-        <ul class="pagination justify-content-center">
-        <!-- <span class="step-links"> -->
-            <!-- {% if page_obj.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
-            {% else %}
-            <li><a href="#" class="disabled button big previous">Previous Page</a></li>
-            {% endif %}
-    
-            <li class="current page-item page-link">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </li>
-    
-            {% if page_obj.has_next %}
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a></li>
-            {% endif %} -->
-
-            <div>
-              <span class="step-links pagination">
-                  {% if page_obj.has_previous %}
-                      <a class="page-link" href="?page=1">&laquo; first</a>
-                      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
-                  {% endif %}
-          
-                  <span class="current page-link disabled">
-                      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                  </span>
-          
-                  {% if page_obj.has_next %}
-                      <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a>
-                      <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                  {% endif %}
-              </span>
-          </div>
-        </span>
-        </ul>
-    </div>
+      
 <!-- Footer-->
       <footer class="py-5 bg-dark">
         <!-- Begin Mailchimp Signup Form -->
         <div class="row">
-          <div class="col-4 ">
+          <div class="col-12 col-sm-6 col-lg-4 ">
             <div class="row text-center">
               <a href="#" class="pt-1" rel="noopener"><i class="fab fa-facebook-square text-center text-decoration-none text-white fa-2x"></i></a>
             </div>
           </div>
-          <div class="col-4 ">
+          <div class="col-12 col-sm-6 col-lg-4 ">
             <div class="row text-center ">
               <p class="p-0"><a class="text-decoration-none text-white pt-1" target="_blank" href="https://www.britannica.com/video/187019/science-appeal-music#:~:text=These%20people%20listened%20to%20the,that%20make%20you%20feel%20good." rel="external"><i class="far fa-question-circle fa-2x"></i> Why do people love music?</a></p>
             </div>
           </div>
-          <div class="col-4 mb-5 p-0">
+          <div class="col-12 col-sm-12 col-lg-4 mb-5 p-0">
             <div class="row">
               <div id="mc_embed_signup">
                 <form action="https://herokuapp.us8.list-manage.com/subscribe/post?u=4ef5ce5d072954ee31f3a2a48&amp;id=073c932702&amp;f_id=000c71e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>

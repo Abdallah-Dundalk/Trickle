@@ -53,7 +53,6 @@ def index(request):
             queries = Q(title__icontains=query) | Q(artist__icontains=query)
             songs = songs.filter(queries)
 
-
     context = {
         'songs': songs,
         'search_term': query,
@@ -62,6 +61,7 @@ def index(request):
     }
 
     return render(request, 'home/index.html', context)
+
 
 @login_required
 def get_play_song_page(request, song_id):
@@ -72,6 +72,7 @@ def get_play_song_page(request, song_id):
     }
 
     return render(request, 'home/play_song.html', context)
+
 
 @login_required
 def add_music(request):
@@ -106,6 +107,7 @@ def playlists(request):
 
     return render(request, template, context)
 
+
 @login_required
 def playlist_songs(request, playlist_id):
     playlist_songs = Song.objects.all().filter(playlist=playlist_id)
@@ -115,6 +117,7 @@ def playlist_songs(request, playlist_id):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def edit_playlist(request, playlist_id):
@@ -135,6 +138,7 @@ def edit_playlist(request, playlist_id):
     }
     return render(request, template, context)
 
+
 @login_required
 def delete_playlist(request, playlist_id):
     playlist = get_object_or_404(Playlist, id=playlist_id)
@@ -153,8 +157,11 @@ def delete_playlist(request, playlist_id):
     }
     return render(request, 'home/delete_playlist.html', context)
 
+
 @login_required
 def add_playlist(request):
+    user = request.user
+    print(user)
 
     template = 'home/add_playlist.html'
     if request.method == 'POST':
@@ -162,7 +169,7 @@ def add_playlist(request):
         print("start")
         if form.is_valid():
             new_form = form.save(commit=False)
-            # Attach the user's profile to the order
+            # Attach the user's profile to the form
             new_form.user = request.user
             print(new_form.user)
             new_form.save()
@@ -175,14 +182,16 @@ def add_playlist(request):
     }
     return render(request, template, context)
 
+
 @login_required
 def add_song_to_playlist(request, song_id):
     song = get_object_or_404(Song, id=song_id)
     template = 'home/add_song_to_playlist.html'
     if request.method == 'POST':
-        form = AddSongToPlayListForm(request.POST, instance=song)
+        form = AddSongToPlayListForm(data=request.POST, instance=song)
         print("start")
         if form.is_valid():
+            # form.instance.user = request.user
             form.save()
             print("saved")
             messages.success(request,  "Song added to playlist...")

@@ -7,59 +7,70 @@
     {% if user.is_authenticated %}
           {% for group in request.user.groups.all %} 
               {% if group.name == 'subscribed' %} 
-              <form action="" method="GET" >
-                <input type="text" name="q" placeholder="Search music" class="my-3 col-4 offset-4">
-                              
-                <div class="row">
-                  <button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4" type="submit" >Search</button>
-                </div>
-              </form> 
-              {% for song in page_obj %}
-                  {# Each "contact" is a Contact model object. #}
-                  {{ song.title|upper }}<br>
-                  
-              {% endfor %}
-
-
-                  <!-- {% for song in songs %}
-
-                      <div class="col-12 song-container bg-dark">
-                        <div class="row">
-                          <div class="col-1 blank-space">
-                            <div class="row">
-                            </div>
-                          </div>
-                          
-                          <div class="col-4 col-lg-2 song-image ms-5 mt-5 mb-5">
-                            <div class="row">
-                            <a href="play_song/{{song.id}}">
-                              <img src="{{song.image.url}}" alt="">
-                            </a>
+              <section class="music-player-container">
+                <form action="" method="GET" >
+                  <input type="text" name="q" placeholder="Search music" class="my-2 col-4 offset-4 mt-4">
                                 
-                              
-                            </div>
+                  <div class="row">
+                    <button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4" type="submit" >Search</button>
+                  </div>
+                </form> 
+                <div class="container ">
+                  <div class="row justify-content-center">
+                    {% for song in page_obj %}
+                      <div class="col-10 offset-1 col-sm-5 col-md-4 col-lg-3 m-2 m-lg-4 bg-custom p-2">
+                        <div class="row">
+                          <div class="col-6">
+                            <a  href="play_song/{{song.id}}">
+                              <img class="img-thumbnail" src="{{song.image.url}}" alt="">
+                            </a>
                           </div>
-
-                          <div class="col-4 col-lg-2 song-info mt-5 text-center pt-4">
-                            <div class="row">
-                              <h4>Track: {{song.title}}</h4>
-                            </div>
-                            <div class="row">
-                              <h6>Performed By: {{song.artist}}</h6>
-                            </div>
-                            <div class="row">
-                              <a href="add_song_to_playlist/{{song.id}}" class="btn btn-warning">Add to Playlist</a>
-                            </div>
+                          <div class="col-6">
+                            <div><h5 class="text-white h-35 mt-2">{{song.title}}</h5></div>
+                            <div><h6 class="text-white h-35 mb-4">By: {{song.artist}}</h6></div>
                             
-                          </div>
-                          <div class="col-4 col-lg-8 blank-space">
-                            <div class="row">
-                            </div>
+                            
+                            <div><a href="add_song_to_playlist/{{song.id}}" class="btn btn-warning btn-sm btn-position"><i class="fas fa-plus"></i><strong></i> to Playlist</a></strong> </div>
+                            
                           </div>
                         </div>
                       </div>
-                      <hr>
-                  {% endfor %} -->
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="justify-content-center mt-5">
+                  <ul class="pagination justify-content-center">
+                      <div>
+                        <span class="step-links pagination">
+                            {% if page_obj.has_previous %}
+                                <a class="page-link paginator-btn " href="?page=1">&laquo; first</a>
+                                <a class="page-link paginator-btn " href="?page={{ page_obj.previous_page_number }}">previous</a>
+                            {% endif %}
+          
+                            {% if page_obj.has_previous or page_obj.has_next %}
+                            <span class="current page-link disabled paginator-btn">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                            </span>
+                            {% endif %}
+          
+                            {% if page_obj.has_next %}
+                                <a class="page-link paginator-btn btn-warning " href="?page={{ page_obj.next_page_number }}">next</a>
+                                <a class="page-link paginator-btn " href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                  </ul>
+              
+              </section>
+              
+         
+              
+
+
+                 
+
+                      
+                  
               {% endif %}
           {% empty %}
          
