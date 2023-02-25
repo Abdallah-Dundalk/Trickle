@@ -57,7 +57,7 @@ def index(request):
 
     return render(request, 'home/index.html', context)
 
-
+@login_required
 def get_play_song_page(request, song_id):
     song = get_object_or_404(Song, id=song_id)
 
@@ -67,7 +67,7 @@ def get_play_song_page(request, song_id):
 
     return render(request, 'home/play_song.html', context)
 
-
+@login_required
 def add_music(request):
     if request.method == 'POST':
         form = AddSongForm(request.POST, request.FILES)
@@ -100,7 +100,7 @@ def playlists(request):
 
     return render(request, template, context)
 
-
+@login_required
 def playlist_songs(request, playlist_id):
     playlist_songs = Song.objects.all().filter(playlist=playlist_id)
     template = 'home/playlist_songs.html'
@@ -110,7 +110,7 @@ def playlist_songs(request, playlist_id):
 
     return render(request, template, context)
 
-
+@login_required
 def edit_playlist(request, playlist_id):
     playlist = get_object_or_404(Playlist, id=playlist_id)
     template = 'home/edit_playlist.html'
@@ -129,7 +129,7 @@ def edit_playlist(request, playlist_id):
     }
     return render(request, template, context)
 
-
+@login_required
 def delete_playlist(request, playlist_id):
     playlist = get_object_or_404(Playlist, id=playlist_id)
     if request.method == 'POST' and 'delete-btn' in request.POST:
@@ -147,7 +147,7 @@ def delete_playlist(request, playlist_id):
     }
     return render(request, 'home/delete_playlist.html', context)
 
-
+@login_required
 def add_playlist(request):
 
     template = 'home/add_playlist.html'
@@ -169,7 +169,7 @@ def add_playlist(request):
     }
     return render(request, template, context)
 
-
+@login_required
 def add_song_to_playlist(request, song_id):
     song = get_object_or_404(Song, id=song_id)
     template = 'home/add_song_to_playlist.html'
