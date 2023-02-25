@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.core.paginator import Paginator
 from . models import Song, Playlist
 from profiles.models import UserProfile
+from membership_options.models import MembershipOptions
 from . forms import AddSongForm, AddPlaylistForm, AddSongToPlayListForm
 from django.contrib import messages
 from datetime import datetime, timedelta
@@ -26,6 +27,7 @@ def index(request):
     """A view to return all songs on index page"""
     songs = Song.objects.all()
     query = None
+    membership_options = MembershipOptions.objects.all().order_by('pk').values()
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
@@ -50,6 +52,7 @@ def index(request):
     context = {
         'songs': songs,
         'search_term': query,
+        'membership_options': membership_options,
     }
 
     return render(request, 'home/index.html', context)

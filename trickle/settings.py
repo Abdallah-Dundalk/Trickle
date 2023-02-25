@@ -121,6 +121,7 @@ ACCOUNT_EMAIL_MAX_LENGTH = 254
 ACCOUNT_USERNAME_MIN_LENGTH = 3
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+ACCOUNT_SIGNUP_REDIRECT_URL = "/membership_options/"
 
 
 WSGI_APPLICATION = 'trickle.wsgi.application'
