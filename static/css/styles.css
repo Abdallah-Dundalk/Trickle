@@ -11319,6 +11319,20 @@ textarea.form-control-lg {
   background-repeat: repeat-x;
   background-size: cover;
 }
+
+.music-player-container-repeat {
+  display: block;
+  width: 100%;
+  height: auto;
+  
+  margin: auto;
+  overflow: hidden;
+  background-image: url("https://res.cloudinary.com/da7esyqo0/image/upload/v1675555920/wallpaperflare.com_wallpaper_v22xmu.jpg");
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+
+
 .music-player {
   display: block;
   position: relative;

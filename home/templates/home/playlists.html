@@ -2,52 +2,39 @@
 {% load static %}
 
 {% block content %}
-<div class="col-4 offset-4 mt-5 mb-5">
-    <div class="row">
+<section class="music-player-container-repeat">
+    <div class="col-4 offset-4 mt-5 mb-5 ">
         <div class="row">
-            <a href="/add_playlist" class="btn upload-btn">Add Playlist</a>
-        </div>  
-    </div>
-</div>
-    {% for playlist in playlists %}
-
-        <div class="col-12 song-container bg-dark">
-        <div class="row">
-            <div class="col-1 blank-space">
             <div class="row">
-            </div>
-            </div>
-            
-            <div class="col-4 col-lg-2 song-image ms-5 mt-5 mb-5">
-            <div class="row">
-            <a href="/playlist_songs/{{playlist.id}}">
-                <h1>{{ playlist.playlist_name }}</h1>
-            </a>
-            <div class="row">
-                <a href="/edit_playlist/{{playlist.id}}" class="btn btn-warning">Edit Playlist Name</a>
+                <a href="/add_playlist" class="btn upload-btn"><i class="fas fa-plus"></i>Add Playlist</a>
             </div>  
-            <div class="row">
-                <a href="/delete_playlist/{{playlist.id}}" class="btn btn-danger">Delete Playlist</a>
-            </div>   
+        </div>
+    </div>
+        
+    
+       
+    <div class="container-fluid">
+        {% for playlist in playlists %}
+        <div class="row align-items-start bg-custom m-4 ">
+            <div class="col-9 offset-1 ">
+                <a class="text-center text-decoration-none " href="/playlist_songs/{{playlist.id}}">
+                    <h1 class="text-start ps-3 pt-2 text-white">{{ playlist.playlist_name }}</h1>
+                </a>
             </div>
+            <div class="col-1">
+                <a href="/edit_playlist/{{playlist.id}}" class="btn btn-warning mt-3"><i class="fas fa-edit"></i>Edit</a>
             </div>
+            <div class="col-1">
+                <a href="/delete_playlist/{{playlist.id}}" class="btn btn-danger mt-3"><i class="fas fa-trash-alt"></i>DEL</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>  
+   
+    
+    <hr>
+</section>
 
-            <div class="col-4 col-lg-2 song-info mt-5 text-center pt-4">
-            <div class="row">
-                <h4>Track: {{song.title}}</h4>
-            </div>
-            <div class="row">
-                <h6>Performed By: {{song.artist}}</h6>
-            </div>
-            
-            </div>
-            <div class="col-4 col-lg-8 blank-space">
-            <div class="row">
-            </div>
-            </div>
-        </div>
-        </div>
-        <hr>
-    {% endfor %}
+
 
 {% endblock %}
