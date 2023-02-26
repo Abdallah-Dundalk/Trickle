@@ -6,8 +6,8 @@
 <div class="music-player-container">
     <div class="row">
         {% for option in membership_options %}
-            <div class="col-1"></div>
-            <div class="col-4 my-5">
+            <div class="col-2 col-md-1"></div>
+            <div class="col-8 col-md-4 my-5">
                 <div class="row">
                     <div class="card text-center">
                         <div class="card-body">
@@ -29,7 +29,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5"
+                                        <input type="submit" class="btn upload-btn my-3 col-6 col-md-4 offset-md-4 trickle-font"
                                             value="Buy Now">
                                     </div>
                                     <input type="hidden" name="redirect_url" value="{% url 'checkout' %}">
