@@ -51,12 +51,12 @@
 <form method="POST" action="" id="payment-form" class="col-10 offset-1 col-sm-6 offset-sm-3 my-5">
   {% csrf_token %}
   <fieldset class="text-white payment-form-text my-2">
-    <legend>Details</legend>
+    <legend class="my-2">Details</legend>
     {{ order_form.full_name | as_crispy_field }}
     {{ order_form.email | as_crispy_field }}
   </fieldset>
-  <fieldset class="text-white payment-form-text my-2"">
-    <legend>Address</legend>
+  <fieldset class="text-white payment-form-text my-2">
+    <legend class="my-2">Address</legend>
     {{ order_form.phone_number | as_crispy_field }}
     {{ order_form.country | as_crispy_field }}
     {{ order_form.town_or_city | as_crispy_field }}
@@ -65,7 +65,7 @@
 
   </fieldset>
   <fieldset class="text-white payment-form-text my-2">
-    <legend>Payment Info</legend>
+    <legend class="my-2">Payment Info</legend>
     <!-- stripe card element goes here -->
     <div id="card-element"></div>
 

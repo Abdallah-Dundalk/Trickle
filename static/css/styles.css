@@ -11664,7 +11664,7 @@ header {
 
 .top-left-logo {
   position: relative;
-  top: 20px;
+  top: 10px;
 }
 
 @media only screen and (max-width: 440px) {
