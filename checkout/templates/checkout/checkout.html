@@ -48,14 +48,14 @@
       {% endfor %}
   </div>
 
-<form method="POST" action="" id="payment-form">
+<form method="POST" action="" id="payment-form" class="col-10 offset-1 col-sm-6 offset-sm-3 my-5">
   {% csrf_token %}
-  <fieldset>
+  <fieldset class="text-white payment-form-text my-2">
     <legend>Details</legend>
     {{ order_form.full_name | as_crispy_field }}
     {{ order_form.email | as_crispy_field }}
   </fieldset>
-  <fieldset>
+  <fieldset class="text-white payment-form-text my-2"">
     <legend>Address</legend>
     {{ order_form.phone_number | as_crispy_field }}
     {{ order_form.country | as_crispy_field }}
@@ -64,7 +64,7 @@
     {{ order_form.street_address2 | as_crispy_field }}
 
   </fieldset>
-  <fieldset>
+  <fieldset class="text-white payment-form-text my-2">
     <legend>Payment Info</legend>
     <!-- stripe card element goes here -->
     <div id="card-element"></div>
@@ -76,7 +76,7 @@
     <input type="hidden" value="{{ client_secret }}" name="client_secret">
   </fieldset>
   {{ form.as_p}}
-  <div class="row">
+  <div class="row my-5">
     <button id="submit-button" class="btn upload-btn my-3 col-4 offset-4" type="submit">Confirm Purchase</button>
   </div>
   <p class="small text-danger">
@@ -88,13 +88,6 @@
 </form>
 </div>
 
-
-<!-- Footer-->
-<footer class="py-5 bg-dark ">
-  <div>
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
-  </div>
-</footer>
 
 {% endblock %}
 

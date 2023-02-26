@@ -11324,7 +11324,7 @@ textarea.form-control-lg {
   display: block;
   width: 100%;
   height: auto;
-  
+  min-height: 450px;
   margin: auto;
   overflow: hidden;
   background-image: url("https://res.cloudinary.com/da7esyqo0/image/upload/v1675555920/wallpaperflare.com_wallpaper_v22xmu.jpg");
@@ -11394,7 +11394,6 @@ textarea.form-control-lg {
 .mejs__controls .mejs__playpause-button {
   position: relative;
   right: -40%;
-  /* bottom: %; */
   width: 40px;
 }
 .mejs__controls .mejs__playpause-button button {
@@ -11589,6 +11588,12 @@ header {
 
 /* Mailchimp css */
 #mc_embed_signup{
+  clear:left; 
+  font: 14px system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: white;  
+}
+
+.payment-form-text{
   clear:left; 
   font: 14px system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   color: white;  
