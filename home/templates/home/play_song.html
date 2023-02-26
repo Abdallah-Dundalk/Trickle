@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block extra_meta %}
+    <meta name="description" 
+    content="A page where users can listen to music." />
+{% endblock %}
 
 {% block content %}
  
 <!-- Content section-->
-
 <section class=" music-player-container">
 	<div class="music-player my-5">
 		<div class="cover" id="music-cover">

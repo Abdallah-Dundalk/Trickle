@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block extra_meta %}
+    <meta name="description" 
+    content="A page with a form for site admin to upload music content." />
+{% endblock %}
 {% block content %}
 <!-- Content section-->
-{% for message in messages %}
-	<div class="alert alert-success alert-dismissible fade show" role="alert">
-		<strong>{{message}}</strong>
-		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	</div>
-{% endfor %}
+
 <section class="music-player-container">
 	<form method="POST" action="" enctype="multipart/form-data" class="trickle-font py-4">
 		{% csrf_token %}

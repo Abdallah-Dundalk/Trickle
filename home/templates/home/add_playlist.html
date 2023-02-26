@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block extra_meta %}
+    <meta name="description" 
+    content="A page where users can create music playlists." />
+{% endblock %}
 {% block content %}
  <!-- Content section-->
  {% for message in messages %}

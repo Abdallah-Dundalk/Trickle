@@ -103,7 +103,7 @@ def playlist_songs(request, playlist_id):
     playlist_songs = Song.objects.all().filter(playlist=playlist_id)
     template = 'home/playlist_songs.html'
     context = {
-        "playlist_songs": playlist_songs
+        "playlist_songs": playlist_songs,
     }
 
     return render(request, template, context)
