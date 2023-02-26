@@ -10,58 +10,53 @@
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% endfor %}
-
-<form method="POST" action="" enctype="multipart/form-data">
-  {% csrf_token %}
+<section class="music-player-container">
+  <form method="POST" action="" enctype="multipart/form-data" class="trickle-font py-4">
+    {% csrf_token %}
+    
   
-
-  <div class="col-4 offset-4">
-    <div>{{form.title.label_tag}}</div>
-    <div class="row">
-      {{form.title}}
+    <div class="col-4 offset-4 trickle-font py-2">
+      
+      <div class="row">
+        {{form.title | as_crispy_field}}
+      </div>
     </div>
-  </div>
-  <div class="col-4 offset-4">
-    <div>{{form.artist.label_tag}}</div>
-    <div class="row">
-      {{form.artist}}
+    <div class="col-4 offset-4 trickle-font py-2">
+    
+      <div class="row">
+        {{form.artist | as_crispy_field}}
+      </div>
     </div>
-  </div>
-
-  <div class="col-4 offset-4">
-    <div>{{form.audio_link.label_tag}}</div>
-    <div class="row">
-      {{form.audio_link}}
-    </div>
-  </div>
-
-  <div class="col-4 offset-4 audi-file-input">
-    <div>{{form.audio_file.label_tag}}</div>
-    <div class="row">
-      {{form.audio_file}}
-    </div>
-  </div>
-  <div class="col-4 offset-4">
-    <div>{{form.image.label_tag}}</div>
-    <div class="row">
-      {{form.image}}
-    </div>
-  </div>
   
-
+    <div class="col-4 offset-4 trickle-font py-2">
+      
+      <div class="row">
+        {{form.audio_link | as_crispy_field}}
+      </div>
+    </div>
   
+    <div class="col-4 offset-4 audi-file-input trickle-font py-2">
+     
+      <div class="row">
+        {{form.audio_file | as_crispy_field}}
+      </div>
+    </div>
+    <div class="col-4 offset-4 trickle-font py-2">
+    
+      <div class="row">
+        {{form.image | as_crispy_field}}
+      </div>
+    </div>
+    
   
-  <div class="row">
-    <button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4" type="submit" >Upload</button>
-  </div>
-</form>
+    
+    
+    <div class="row">
+      <button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4" type="submit" >Upload</button>
+    </div>
+  </form>
+</section>
 
-
-
-<!-- Footer-->
-<footer class="py-5 bg-dark fixed-bottom">
-    <div ><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-</footer>
 
 {% endblock %}
 

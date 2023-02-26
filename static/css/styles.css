@@ -11599,6 +11599,12 @@ header {
   color: white;  
 }
 
+.trickle-font{
+  clear:left; 
+  font: 14px system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: white;  
+}
+
 .login-status {
   background-color: #212529;
 }

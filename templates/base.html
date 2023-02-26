@@ -70,7 +70,7 @@
               {% if request.user.is_authenticated %}
               <li class="nav-item"><a class="nav-link" href="{% url 'playlists' %}">Playlists</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'add_music' %}">Add Music</a></li>
-              <li class="nav-item"><a class="nav-link" href="#!">My Account</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Log Out</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'membership_options' %}">Subscribe</a></li>
               {% else %}
@@ -125,7 +125,7 @@
               <p class="p-0"><a class="text-decoration-none text-white pt-1" target="_blank" href="https://www.britannica.com/video/187019/science-appeal-music#:~:text=These%20people%20listened%20to%20the,that%20make%20you%20feel%20good." rel="external"><i class="far fa-question-circle fa-2x"></i> Why do people love music?</a></p>
             </div>
           </div>
-          <div class="col-8 offset-2 col-lg-3 mb-5 p-0">
+          <div class="col-8 offset-2 col-lg-3 offset-lg-0 mb-5 p-0">
             <div class="row">
               <div id="mc_embed_signup">
                 <form action="https://herokuapp.us8.list-manage.com/subscribe/post?u=4ef5ce5d072954ee31f3a2a48&amp;id=073c932702&amp;f_id=000c71e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
