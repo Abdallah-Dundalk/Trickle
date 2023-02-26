@@ -4,60 +4,43 @@
 {% block content %}
  
 <!-- Content section-->
-<div class="col-12 song-container bg-dark">
+<div class="container-fluid music-player-container">
   <div class="row">
-    <div class="col-1 blank-space">
+    <div class="col-4 offset-2 mt-5 bg-custom p-2">
       <div class="row">
-      </div>
-    </div>
-    
-    <div class="col-4 col-lg-2 song-image ms-5 mt-5 mb-5">
-      <div class="row">
-      <a href="play_song/{{song.id}}">
-        <img src="{{song.image.url}}" alt="">
-      </a>
+        <div class="col-6">
+          <a href="play_song/{{song.id}}">
+            <img class="img-thumbnail" src="{{song.image.url}}" alt="">
+          </a>
+        </div>
+        <div class="col-6">
           
-        
-      </div>
-    </div>
 
-    <div class="col-4 col-lg-2 song-info mt-5 text-center pt-4">
-      <div class="row">
-        <h4>Playlist: {{playlist.playlist_name}}</h4>
+        </div>
       </div>
-      <div class="row">
-        <h6>Performed By: {{playlist.song}}</h6>
-      </div>
-      
-      
     </div>
-    <div class="col-4 col-lg-8 blank-space">
-      <div class="row">
-      </div>
+    <div class="col-4 mt-5 bg-custom p-5">
+      <p class="justify-content-center text-white">You have chosen to add <strong>{{song.title}}</strong> by <strong>{{song.artist}}</strong> to a playlist. Please select a playlist from the dropdown menu below.</p>
     </div>
   </div>
-</div>
-<hr>
-<form method="POST" action="/add_song_to_playlist/{{song.id}}/" enctype="multipart/form-data">
-  {% csrf_token %}
-  
 
-  <div class="col-4 offset-4 ">
-    <div class="d-flex justify-content-center">Select Playlist</div>
+  <form method="POST" action="/add_song_to_playlist/{{song.id}}/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-4 offset-4 ">
+      <div class="d-flex justify-content-center text-white mt-5">Select Playlist</div>
+      <div class="row">
+        {{form.playlist}}
+      </div>
+    </div>
     <div class="row">
-      {{form.playlist}}
+      <button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4 mb-5" type="submit">Save</button>
     </div>
-  </div>
-  <div class="row">
-    <button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4" type="submit" >Save</button>
-  </div>
-  
-</form>
 
-<!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div ><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-</footer>
+  </form>
+</div>
+
+
+
 
 {% endblock %}
 
