@@ -7,6 +7,7 @@
 
 {% block content %}
 <section class="music-player-container-repeat row">
+    <h1 class="text-center mt-3 trickle-heading">Playlists</h1>
     <div class="col-4 offset-4 mt-5 mb-5 ">
             <div class="row">
                 <a href="/add_playlist" class="btn upload-btn text-center"><i class="fas fa-plus"></i>Add Playlist</a>
@@ -16,7 +17,7 @@
 
     <div class="container-fluid">
         {% for playlist in playlists %}
-            <div class="row bg-custom m-4 ">
+            <div class="row bg-custom m-4">
                 <div class="text-center ">
                     <a class="text-center text-decoration-none" href="/playlist_songs/{{playlist.id}}">
                         <h1 class="text-start ps-3 pt-2 text-white">{{ playlist.playlist_name }}</h1>
@@ -31,9 +32,19 @@
                             class="fas fa-trash-alt"></i>DEL</a>
                 </div>
             </div>
+        {% empty %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-10 offset-1 col-md-4 offset-md-4 my-5 bg-custom p-5">
+                        <p class="justify-content-center text-white">No playlists have been created yet... Click 'Add Playlist' to create a playlist'.</p>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
     </div>
     <hr>
 </section>
 
 {% endblock %}
+
+

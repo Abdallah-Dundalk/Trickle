@@ -11684,6 +11684,11 @@ header {
 .black-on-hover:hover{
   color: black;
 }
+
+.trickle-heading{
+  font: 24px system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: white;  
+}
 @media only screen and (max-width: 440px) {
   
 .mejs__button>button:focus {

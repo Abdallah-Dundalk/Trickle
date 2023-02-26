@@ -20,7 +20,7 @@ def index(request):
     songs = Song.objects.all().order_by('pk').values()
     query = None
     membership_options = MembershipOptions.objects.all().order_by('pk').values()
-    paginator = Paginator(songs, 5) 
+    paginator = Paginator(songs, 15) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -44,6 +44,9 @@ def index(request):
                 return (redirect('home'))
             queries = Q(title__icontains=query) | Q(artist__icontains=query)
             songs = songs.filter(queries)
+            paginator = Paginator(songs, 5) 
+            page_number = request.GET.get('page')
+            page_obj = paginator.get_page(page_number)
 
     context = {
         'songs': songs,

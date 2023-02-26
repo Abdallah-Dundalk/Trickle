@@ -5,7 +5,14 @@
     content="A page where users can access music stored in their playlists." />
 {% endblock %}
 {% block content %}
+
 <section class="music-player-container">
+	
+	{% for playlist_song in playlist_songs%}
+	{% if forloop.first %}
+		<h1 class="trickle-font text-center m-3 fs-4">{{playlist_song.playlist| upper}} Playlist</h1>
+	{% endif %}
+	{% endfor%}
 
 	<div class="col-4 offset-4 mt-5 mb-5">
 		<div class="row">
@@ -51,8 +58,7 @@
 		<div class="row">
 			<div class="col-10 offset-1 col-md-4 offset-md-4 my-5 bg-custom p-5">
 				<p class="justify-content-center text-white">There are currently no songs in your playlist. Click to
-					below
-					button to add songs.</p>
+					'Add songs' button to add music.</p>
 			</div>
 		</div>
 	</div>
