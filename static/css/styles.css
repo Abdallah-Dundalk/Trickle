@@ -11625,3 +11625,18 @@ header {
   text-decoration: none;
   border-color: rgba(255, 255, 255, .55);;
 }
+
+.facebook-link{
+  color: white;
+  text-decoration: none;
+}
+
+.facebook-link:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.top-left-logo {
+  position: relative;
+  top: 20px;
+}
