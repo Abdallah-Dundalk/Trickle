@@ -11677,6 +11677,10 @@ header {
   overflow: hidden;
 }
 
+.alert-dismissible{
+  font-size: 12px;
+}
+
 @media only screen and (max-width: 440px) {
   
 .mejs__button>button:focus {
@@ -11701,7 +11705,6 @@ header {
 .mejs__controls .mejs__playpause-button {
   position: relative;
   right: -40%;
-  /* bottom: %; */
   width: 40px;
 }
 .mejs__controls .mejs__playpause-button button {
