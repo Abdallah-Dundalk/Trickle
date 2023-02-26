@@ -16,6 +16,10 @@ class Playlist(models.Model):
         return self.playlist_name
 
 
+""" The below model is modified code by 
+Onojakpor Ochuko and can be found here 
+https://www.section.io/engineering-education/how-to-build-a-music-player-using-django/"""
+
 class Song(models.Model):
     title = models.CharField(max_length=254)
     artist = models.CharField(max_length=254)

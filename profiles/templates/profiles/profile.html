@@ -3,39 +3,20 @@
 
 {% block content %}
 
-
 <section class="music-player-container">
-
-
-
-
-    <!-- <div class="col-4 offset-4 mt-5">
-        <div class="row">
-            <div class="card text-center mb-5">
-                <div class="card-body">
-                    <h5 class="card-title text-success">Username: {{ user.username }}</h5>
-                    <p>Signed up: {{ user.date_joined }}</p>
-                    <p>Subscribed: {{ profile.subscription_date }}</p>
-                    <p>Subscription Expirey: {{ profile.subscription_expiration_date }}</p>
-                    <a href="{% url 'home' %}" class="btn btn-primary">Access Music</a>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
     <div class="container ">
         <div class="row">
-          <div class="col-10 offset-1 col-md-4 offset-md-4 my-5 bg-custom p-5 text-white">
-            <h5 class="card-title ">Username: {{ user.username }}</h5>
-                    <p>Signed up: {{ user.date_joined }}</p>
-                    <p>Subscribed: {{ profile.subscription_date }}</p>
-                    <p>Subscription Expirey: {{ profile.subscription_expiration_date }}</p>
-                    
-          </div>
-         </div>
-      </div>
+            <div class="col-10 offset-1 col-md-4 offset-md-4 my-5 bg-custom p-5 text-white">
+                <h5 class="card-title ">Username: {{ user.username }}</h5>
+                <p>Signed up: {{ user.date_joined }}</p>
+                <p>Subscribed: {{ profile.subscription_date }}</p>
+                <p>Subscription Expirey: {{ profile.subscription_expiration_date }}</p>
 
-    </section>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
 
 

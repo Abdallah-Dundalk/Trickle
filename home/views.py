@@ -15,15 +15,6 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 
 
-# def index(request):
-#     """ A view to return the index page"""
-#     paginator = Paginator(Song.objects.all(), 1)
-#     page_number = request.GET.get('page')
-#     page_obj = paginator.get_page(page_number)
-#     context = {"page_obj": page_obj}
-#     return render(request, 'home/index.html', context)
-
-
 def index(request):
     """A view to return all songs on index page"""
     songs = Song.objects.all().order_by('pk').values()
@@ -44,6 +35,7 @@ def index(request):
             user = request.user
             user.groups.remove(group)
 
+# This if statement is from Code Institute.
     if request.GET:
         if 'q' in request.GET:
             query = request.GET['q']
@@ -80,13 +72,11 @@ def add_music(request):
         form = AddSongForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            print("form saved")
             messages.success(request, 'Music successfully added')
             return redirect('add_music')
         else:
             messages.error(request, 'Failed to add song. Please ensure the \
                            form is valid before submitting')
-            print('failed')
     else:
         form = AddSongForm()
 
@@ -125,10 +115,8 @@ def edit_playlist(request, playlist_id):
     template = 'home/edit_playlist.html'
     if request.method == 'POST':
         form = AddPlaylistForm(request.POST, instance=playlist)
-        print("start")
         if form.is_valid():
             form.save()
-            print("saved")
             messages.success(request, 'Play list updated...')
             return redirect('playlists')
     form = AddPlaylistForm(instance=playlist)
@@ -144,11 +132,9 @@ def delete_playlist(request, playlist_id):
     playlist = get_object_or_404(Playlist, id=playlist_id)
     if request.method == 'POST' and 'delete-btn' in request.POST:
         playlist.delete()
-        print("deleted")
         messages.success(request, 'Playlist deleted.')
         return redirect('playlists')
     elif request.method == 'POST' and 'cancel-btn' in request.POST:
-        print("cancelled")
         messages.success(request, 'Playlist not deleted.')
         return redirect('playlists')
     form = AddPlaylistForm(instance=playlist)
@@ -161,8 +147,6 @@ def delete_playlist(request, playlist_id):
 @login_required
 def add_playlist(request):
     user = request.user
-    print(user)
-
     template = 'home/add_playlist.html'
     if request.method == 'POST':
         form = AddPlaylistForm(request.POST)
@@ -191,7 +175,6 @@ def add_song_to_playlist(request, song_id):
         form = AddSongToPlayListForm(data=request.POST, instance=song)
         print("start")
         if form.is_valid():
-            # form.instance.user = request.user
             form.save()
             print("saved")
             messages.success(request,  "Song added to playlist...")

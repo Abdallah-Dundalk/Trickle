@@ -2,59 +2,51 @@
 {% load static %}
 
 {% block content %}
- 
 <!-- Content section-->
 {% for message in messages %}
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>{{message}}</strong> 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		<strong>{{message}}</strong>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
 {% endfor %}
 <section class="music-player-container">
-  <form method="POST" action="" enctype="multipart/form-data" class="trickle-font py-4">
-    {% csrf_token %}
-    
-  
-    <div class="col-4 offset-4 trickle-font py-2">
-      
-      <div class="row">
-        {{form.title | as_crispy_field}}
-      </div>
-    </div>
-    <div class="col-4 offset-4 trickle-font py-2">
-    
-      <div class="row">
-        {{form.artist | as_crispy_field}}
-      </div>
-    </div>
-  
-    <div class="col-4 offset-4 trickle-font py-2">
-      
-      <div class="row">
-        {{form.audio_link | as_crispy_field}}
-      </div>
-    </div>
-  
-    <div class="col-4 offset-4 audi-file-input trickle-font py-2">
-     
-      <div class="row">
-        {{form.audio_file | as_crispy_field}}
-      </div>
-    </div>
-    <div class="col-4 offset-4 trickle-font py-2">
-    
-      <div class="row">
-        {{form.image | as_crispy_field}}
-      </div>
-    </div>
-    
-  
-    
-    
-    <div class="row">
-      <button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4" type="submit" >Upload</button>
-    </div>
-  </form>
+	<form method="POST" action="" enctype="multipart/form-data" class="trickle-font py-4">
+		{% csrf_token %}
+
+		<div class="col-4 offset-4 trickle-font py-2">
+			<div class="row">
+				{{form.title | as_crispy_field}}
+			</div>
+		</div>
+		<div class="col-4 offset-4 trickle-font py-2">
+			<div class="row">
+				{{form.artist | as_crispy_field}}
+			</div>
+		</div>
+
+		<div class="col-4 offset-4 trickle-font py-2">
+			<div class="row">
+				{{form.audio_link | as_crispy_field}}
+			</div>
+		</div>
+
+		<div class="col-4 offset-4 audi-file-input trickle-font py-2">
+			<div class="row">
+				{{form.audio_file | as_crispy_field}}
+			</div>
+		</div>
+
+		<div class="col-4 offset-4 trickle-font py-2">
+			<div class="row">
+				{{form.image | as_crispy_field}}
+			</div>
+		</div>
+
+		<div class="row">
+			<button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4" type="submit">Upload</button>
+		</div>
+		
+	</form>
 </section>
 
 

@@ -36,11 +36,3 @@ var audio = {
 
 audio.init();
 
-// Scroll to music player on page load
-
-$(document).ready(function () {
-    // Handler for .ready() called.
-    $('html, body').animate({
-        scrollTop: $('#music-cover').offset().top,
-    }, 1200);
-});

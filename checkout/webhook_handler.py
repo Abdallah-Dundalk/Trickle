@@ -6,6 +6,7 @@ import json
 import time
 
 
+# The below code is from the Code Institute
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
@@ -44,7 +45,7 @@ class StripeWH_Handler:
         for field, value in shipping_details.address.items():
             if value == "":
                 shipping_details.address[field] = None
-        
+
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -63,7 +64,7 @@ class StripeWH_Handler:
 
                 order_exists = True
                 break
-                
+
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)

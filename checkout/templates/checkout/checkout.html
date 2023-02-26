@@ -2,98 +2,96 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block content %}
 <!-- Content section-->
 <div class="music-player-container">
-{% for message in messages %}
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>{{message}}</strong> 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	{% for message in messages %}
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+		<strong>{{message}}</strong>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+	{% endfor %}
+
+	<div id="loading-screen">
+		<h1 class="text-light logo-font loading-spinner">
+			Processing Payment
+			<hr>
+			<span class="icon d-flex d-block justify-content-center">
+				<i class="fas fa-3x fa-spinner fa-spin"></i>
+			</span>
+		</h1>
+	</div>
+
+	<div class="row">
+
+		{% for item in bag_items %}
+			<div class="col-4 offset-4 mt-5">
+				<div class="row">
+					<div class="card text-center">
+						<div class="card-body">
+							<h5 class="card-title">You have selected</h5>
+							<h5 class="card-title text-danger">{{item.membership_option.name}}</h5>
+							<h5 class="card-title">for purchase</h5>
+							<p class="card-text">{{item.membership_option.description}}.</p>
+							<p class="card-text text-danger">You will be charged €{{item.membership_option.price}}.</p>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-1"></div>
+		{% endfor %}
+	</div>
+
+<!-- The below form code is from Code insitute -->
+	<form method="POST" action="" id="payment-form" class="col-10 offset-1 col-sm-6 offset-sm-3 my-5">
+		{% csrf_token %}
+		<fieldset class="text-white payment-form-text my-2">
+			<legend class="my-2">Details</legend>
+			{{ order_form.full_name | as_crispy_field }}
+			{{ order_form.email | as_crispy_field }}
+		</fieldset>
+		<fieldset class="text-white payment-form-text my-2">
+			<legend class="my-2">Address</legend>
+			{{ order_form.phone_number | as_crispy_field }}
+			{{ order_form.country | as_crispy_field }}
+			{{ order_form.town_or_city | as_crispy_field }}
+			{{ order_form.street_address1 | as_crispy_field }}
+			{{ order_form.street_address2 | as_crispy_field }}
+		</fieldset>
+		<fieldset class="text-white payment-form-text my-2">
+			<legend class="my-2">Payment Info</legend>
+			<!-- stripe card element goes here -->
+			<div id="card-element"></div>
+
+			<!-- used to display error messages -->
+			<div id="card-errors" role="alert"></div>
+
+			<!-- Pass the client secret to the view so we can get the payment intent id -->
+			<input type="hidden" value="{{ client_secret }}" name="client_secret">
+		</fieldset>
+		{{ form.as_p}}
+
+		<div class="row my-5">
+			<button id="submit-button" class="btn upload-btn my-3 col-4 offset-4" type="submit">Confirm Purchase</button>
+		</div>
+
+		<p class="small text-danger">
+			<span class="icon">
+				<i class="fas fa-exclamation-circle"></i>
+			</span>
+			<span>Your card will be charged <strong>${{ order_total|floatformat:2 }}</strong></span>
+		</p>
+	</form>
 </div>
-{% endfor %}
-
-<div id="loading-screen">
-  
-  <h1 class="text-light logo-font loading-spinner">
-    Processing Payment <hr>     
-    <span class="icon d-flex d-block justify-content-center">
-      <i class="fas fa-3x fa-spinner fa-spin"></i>
-    </span>
-  </h1>
-</div>
-
-  <div class="row">
-      {% for item in bag_items %}
-  
-      <div class="col-4 offset-4 mt-5">
-          <div class="row">
-              <div class="card text-center">
-                  <div class="card-body">
-                      <h5 class="card-title">You have selected</h5>
-                      <h5 class="card-title text-danger">{{item.membership_option.name}}</h5>
-                      <h5 class="card-title">for purchase</h5>
-                      <p class="card-text">{{item.membership_option.description}}.</p>
-                      <p class="card-text text-danger">You will be charged €{{item.membership_option.price}}.</p>
-                     
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="col-1"></div>
-
-
-      {% endfor %}
-  </div>
-
-<form method="POST" action="" id="payment-form" class="col-10 offset-1 col-sm-6 offset-sm-3 my-5">
-  {% csrf_token %}
-  <fieldset class="text-white payment-form-text my-2">
-    <legend class="my-2">Details</legend>
-    {{ order_form.full_name | as_crispy_field }}
-    {{ order_form.email | as_crispy_field }}
-  </fieldset>
-  <fieldset class="text-white payment-form-text my-2">
-    <legend class="my-2">Address</legend>
-    {{ order_form.phone_number | as_crispy_field }}
-    {{ order_form.country | as_crispy_field }}
-    {{ order_form.town_or_city | as_crispy_field }}
-    {{ order_form.street_address1 | as_crispy_field }}
-    {{ order_form.street_address2 | as_crispy_field }}
-
-  </fieldset>
-  <fieldset class="text-white payment-form-text my-2">
-    <legend class="my-2">Payment Info</legend>
-    <!-- stripe card element goes here -->
-    <div id="card-element"></div>
-
-    <!-- used to display error messages -->
-    <div id="card-errors" role="alert"></div>
-
-    <!-- Pass the client secret to the view so we can get the payment intent id -->
-    <input type="hidden" value="{{ client_secret }}" name="client_secret">
-  </fieldset>
-  {{ form.as_p}}
-  <div class="row my-5">
-    <button id="submit-button" class="btn upload-btn my-3 col-4 offset-4" type="submit">Confirm Purchase</button>
-  </div>
-  <p class="small text-danger">
-    <span class="icon">
-      <i class="fas fa-exclamation-circle"></i>
-    </span>
-    <span>Your card will be charged <strong>${{ order_total|floatformat:2 }}</strong></span>
-  </p>
-</form>
-</div>
-
-
 {% endblock %}
 
 {% block postloadjs %}
-  {{ block.super }}
-  {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-  {{ client_secret|json_script:"id_client_secret" }}
-  <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

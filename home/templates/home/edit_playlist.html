@@ -6,38 +6,33 @@
 <!-- Content section-->
 {% for message in messages %}
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>{{message}}</strong> 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% endfor %}
 
-
-
-  
 <section class="music-player-container">
-  
-      
-      
-  <form method="POST" action="" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="col-10 offset-1 col-md-4 offset-md-4 my-5 bg-custom p-5">
-      <p class="justify-content-center text-white">You have selected playlist: {{playlist.playlist_name}} for editing. Click 'save' when you have finished editing.</p>
-    </div>
-  <div class="col-4 offset-4 ">
-    <div>{{form.playlist.label_tag}}</div>
-    <div class="row">
-      {{form.playlist_name}}
-    </div>
-  </div>
 
-  
-    <div class="row">
-      <button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4" type="submit" >Save</button>
-    </div>
-  </form>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-10 offset-1 col-md-4 offset-md-4 my-5 bg-custom p-5">
+            <p class="justify-content-center text-white">You have selected playlist: {{playlist.playlist_name}} for
+                editing.
+                Click 'save' when you have finished editing.</p>
+        </div>
+        <div class="col-4 offset-4 ">
+            <div>{{form.playlist.label_tag}}</div>
+            <div class="row">
+                {{form.playlist_name}}
+            </div>
+        </div>
+
+        <div class="row">
+            <button id="form-submit-btn" class="btn upload-btn my-3 col-4 offset-4" type="submit">Save</button>
+        </div>
+    </form>
 </section>
-  
+
 
 
 {% endblock %}
-

@@ -14,7 +14,8 @@ def bag_contents(request):
 
     for item_id, item_data in bag.items():
         if isinstance(item_data, int):
-            membership_option = get_object_or_404(MembershipOptions, pk=item_id)
+            membership_option = get_object_or_404(MembershipOptions,
+                                                  pk=item_id)
             total += item_data * membership_option.price
             product_count += item_data
             bag_items.append({
@@ -22,8 +23,6 @@ def bag_contents(request):
                 'quantity': item_data,
                 'membership_option': membership_option,
             })
-        else:
-            print("!!!!!!!!!!!!!!")
 
     order_total = total
 

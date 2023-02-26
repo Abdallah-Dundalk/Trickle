@@ -3,64 +3,62 @@
 
 {% block content %}
 
+	<section class="music-player-container">
 
-<section class="music-player-container">
-  
-  <div class="col-4 offset-4 mt-5 mb-5">
-    <div class="row">
-        <div class="row">
-            <a href="/index" class="btn upload-btn"><i class="fas fa-plus"></i> Add Songs</a>
-        </div>  
-    </div>
-  </div>
-    {% for playlist_song in playlist_songs %}
+		<div class="col-4 offset-4 mt-5 mb-5">
+			<div class="row">
+				<div class="row">
+					<a href="/index" class="btn upload-btn"><i class="fas fa-plus"></i> Add Songs</a>
+				</div>
+			</div>
+		</div>
+		{% for playlist_song in playlist_songs %}
 
-    <div class="col-12 song-container">
-        <div class="row">
-          <div class="col-1 blank-space">
-            <div class="row">
-            </div>
-          </div>
-          
-          <div class="col-4 col-lg-2 song-image ms-5 mt-5 mb-5">
-            <div class="row">
-            <a href="/play_song/{{playlist_song.id}}">
-              <img src="{{playlist_song.image.url}}" alt="">
-            </a>
-                
-              
-            </div>
-          </div>
+		<div class="col-12 song-container">
+			<div class="row">
+				<div class="col-1 blank-space">
+					<div class="row">
+					</div>
+				</div>
 
-          <div class="col-4 col-lg-2 song-info mt-5 text-center pt-4">
-            <div class="row">
-              <h4>Track: {{playlist_song.title}}</h4>
-            </div>
-            <div class="row">
-              <h6>Performed By: {{playlist_song.artist}}</h6>
-            </div>
-          
-          </div>
-          <div class="col-4 col-lg-8 blank-space">
-            <div class="row">
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr>
-   
-</section>
+				<div class="col-4 col-lg-2 song-image ms-5 mt-5 mb-5">
+					<div class="row">
+						<a href="/play_song/{{playlist_song.id}}">
+							<img src="{{playlist_song.image.url}}" alt="">
+						</a>
+					</div>
+				</div>
 
-    {% empty %}
+				<div class="col-4 col-lg-2 song-info mt-5 text-center pt-4">
+					<div class="row">
+						<h4>Track: {{playlist_song.title}}</h4>
+					</div>
+					<div class="row">
+						<h6>Performed By: {{playlist_song.artist}}</h6>
+					</div>
+				</div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-10 offset-1 col-md-4 offset-md-4 my-5 bg-custom p-5">
-          <p class="justify-content-center text-white">There are currently no songs in your playlist. Click to below button to add songs.</p>
-        </div>
-       </div>
-    </div>
-    
-    {% endfor %}
+				<div class="col-4 col-lg-8 blank-space">
+					<div class="row">
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<hr>
+	</section>
+
+{% empty %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-10 offset-1 col-md-4 offset-md-4 my-5 bg-custom p-5">
+				<p class="justify-content-center text-white">There are currently no songs in your playlist. Click to below
+					button to add songs.</p>
+			</div>
+		</div>
+	</div>
+
+{% endfor %}
 
 {% endblock %}

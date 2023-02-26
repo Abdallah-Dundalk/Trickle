@@ -20,16 +20,6 @@ class AddSongForm(forms.ModelForm):
 
 
 class AddSongToPlayListForm(forms.ModelForm):
-    # def __init__(self, user=None, *args, **kwargs):  # note the additional user param
-    #     self.playlists = Playlist.objects.filter(user=user)
-    #     super(AddSongToPlayListForm, self).__init__(*args, **kwargs)
-    #     self.fields['playlist'].queryset = self.playlists
-    #     if user:
-    #         print('wooooooooo')
-    #         self.fields['playlist'].queryset = Playlist.objects.filter(user=self.request.user)
-    #     else:
-    #         print(user)
-
     class Meta:
         model = Song
         fields = ['playlist']

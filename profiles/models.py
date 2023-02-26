@@ -6,9 +6,10 @@ from django.dispatch import receiver
 from django_countries.fields import CountryField
 import datetime
 
-
+# The below model is modified code from the Code Institute
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_profile")
+    user = models.OneToOneField(User, on_delete=models.CASCADE,
+                                related_name="user_profile")
     default_full_name = models.CharField(max_length=50, null=True,
                                          blank=True)
     default_email = models.EmailField(max_length=254, null=True, blank=True)

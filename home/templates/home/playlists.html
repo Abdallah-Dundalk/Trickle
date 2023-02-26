@@ -7,34 +7,30 @@
         <div class="row">
             <div class="row">
                 <a href="/add_playlist" class="btn upload-btn"><i class="fas fa-plus"></i>Add Playlist</a>
-            </div>  
+            </div>
         </div>
     </div>
-        
-    
-       
+
     <div class="container-fluid">
         {% for playlist in playlists %}
-        <div class="row align-items-start bg-custom m-4 ">
-            <div class="col-9 offset-1 ">
-                <a class="text-center text-decoration-none " href="/playlist_songs/{{playlist.id}}">
-                    <h1 class="text-start ps-3 pt-2 text-white">{{ playlist.playlist_name }}</h1>
-                </a>
+            <div class="row align-items-start bg-custom m-4 ">
+                <div class="col-9 offset-1 ">
+                    <a class="text-center text-decoration-none " href="/playlist_songs/{{playlist.id}}">
+                        <h1 class="text-start ps-3 pt-2 text-white">{{ playlist.playlist_name }}</h1>
+                    </a>
+                </div>
+                <div class="col-1">
+                    <a href="/edit_playlist/{{playlist.id}}" class="btn btn-warning mt-3"><i
+                            class="fas fa-edit"></i>Edit</a>
+                </div>
+                <div class="col-1">
+                    <a href="/delete_playlist/{{playlist.id}}" class="btn btn-danger mt-3"><i
+                            class="fas fa-trash-alt"></i>DEL</a>
+                </div>
             </div>
-            <div class="col-1">
-                <a href="/edit_playlist/{{playlist.id}}" class="btn btn-warning mt-3"><i class="fas fa-edit"></i>Edit</a>
-            </div>
-            <div class="col-1">
-                <a href="/delete_playlist/{{playlist.id}}" class="btn btn-danger mt-3"><i class="fas fa-trash-alt"></i>DEL</a>
-            </div>
-        </div>
         {% endfor %}
-    </div>  
-   
-    
+    </div>
     <hr>
 </section>
-
-
 
 {% endblock %}

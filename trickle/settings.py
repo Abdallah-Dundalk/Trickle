@@ -34,7 +34,6 @@ DEBUG = 'DEVELOPMENT'
 
 ALLOWED_HOSTS = ["trickle.herokuapp.com", "localhost"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'music_hub',
     'cloudinary_storage',
     'cloudinary',
     'django.contrib.sites',

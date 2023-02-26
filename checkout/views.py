@@ -6,14 +6,13 @@ from membership_options.models import MembershipOptions
 from profiles.models import UserProfile
 from django.contrib.auth.models import Group
 from datetime import datetime, timedelta
-
-
 from .forms import OrderForm
 from bag.context import bag_contents
 from .models import Order, OrderLineItem
-
 import stripe
 import json
+
+# The below is modified code from the Code Institute
 
 
 @require_POST
@@ -115,7 +114,6 @@ def checkout_success(request, order_number):
     """ Handles successful checkouts """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    # membership_options = MembershipOptions.objects.all().order_by('pk').values()
     group = Group.objects.get(name='subscribed')
     user = request.user
     user.groups.add(group)
@@ -123,13 +121,10 @@ def checkout_success(request, order_number):
     # Attach the user's profile to the order
     order.user_profile = profile
     order.save()
-    # pk = request.user.id
-    # user_profile = get_object_or_404(UserProfile, pk=pk)
-    # print(user_profile.default_full_name)
     profile.subscription_expiration_date = datetime.now().date() + timedelta(days=30)
     profile.subscription_date = datetime.now().date()
     profile.save()
-    
+
     messages.success(request, f'Success! Your membership has been purchased! \
         Your order number is {order_number}')
 
