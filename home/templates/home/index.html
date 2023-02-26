@@ -139,27 +139,27 @@
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<img src="https://res.cloudinary.com/da7esyqo0/image/upload/v1675465150/singer-resized_cnfluf.jpg"
-								class="d-block w-90 mx-auto" alt="singer/rapper facing microphone">
-							<div class="carousel-caption d-none d-md-block">
-								<h5>First slide label</h5>
-								<p>Some representative placeholder content for the first slide.</p>
+								class="d-block w-90 mx-auto carousel-img" alt="singer/rapper facing microphone">
+							<div class="carousel-caption d-block">
+								<h5>Best Music Streaming Service</h5>
+								<p>Trickle Music Streaming service aims to be among the best music streaming services.</p>
 							</div>
 						</div>
 						<div class="carousel-item">
 							<img src="https://res.cloudinary.com/da7esyqo0/image/upload/v1675465280/concert-resized_orvvda.jpg"
-								class="d-block w-90 mx-auto"
+								class="d-block w-90 mx-auto carousel-img"
 								alt="crowd at music concert with orange lights beaming down">
-							<div class="carousel-caption d-none d-md-block">
-								<h5>Second slide label</h5>
-								<p>Some representative placeholder content for the second slide.</p>
+							<div class="carousel-caption d-block">
+								<h5>Music player Online</h5>
+								<p>Use our awesome music player online to listen to your favourite music.</p>
 							</div>
 						</div>
 						<div class="carousel-item">
 							<img src="https://res.cloudinary.com/da7esyqo0/image/upload/v1675465343/turnstables-resized_tkyght.jpg"
-								class="d-block w-90 mx-auto" alt="turntables lit with a purple glow">
-							<div class="carousel-caption d-none d-md-block">
-								<h5>Third slide label</h5>
-								<p>Some representative placeholder content for the third slide.</p>
+								class="d-block w-90 mx-auto carousel-img" alt="turntables lit with a purple glow">
+							<div class="carousel-caption d-block">
+								<h5>Large collection of Music</h5>
+								<p>Access large collection of music from some of the best rappers of all time.</p>
 							</div>
 						</div>
 					</div>
@@ -177,21 +177,21 @@
 			</div>
 		</div>
 	</section>
-	<section class="membership-section">
-		<div class="row position-relative d-flex aligns-items-center">
+	<section class=" music-player-container">
+		<div class="row position-relative d-flex aligns-items-center mb-5">
 			{% for option in membership_options %}
-				<div class="col-1"></div>
-				<div class="col-4 mt-5">
+				<div class="col-2 col-md-1"></div>
+				<div class="col-8 col-md-4 mt-5">
 					<div class="row">
 						<div class="card text-center">
 							<div class="card-body">
 								<h5 class="card-title">{{option.name}}</h5>
 								<p class="card-text">{{option.description}}.</p>
 								<p class="card-text text-danger">Only €{{option.price}}</p>
-								<h5>Register to purchase a subscription</h5>
-								<div class="row">
-									<button class="btn upload-btn my-3 col-4 offset-4"><a class="nav-link"
-											href="{% url 'account_signup' %}">Register</a></button>
+								<h5>Sign up to purchase a subscription</h5>
+								<div class="row  ">
+									<button class="btn upload-btn my-3 col-6 offset-3 col-md-4 offset-md-4 trickle-font"><a class="nav-link text-white text-decoration-none"
+											href="{% url 'account_signup' %}">Sign Up</a></button>
 								</div>
 							</div>
 						</div>
@@ -206,21 +206,21 @@
 			<div>
 				<section class="text-white">
 					<div class="row mt-4 mb-5">
-						<div class="col col-md-4 offset-md-4">
+						<div class="col-10 offset-1 col-md-4 offset-md-4">
 							<h2 class="col text-center">Best Music Streaming Service</h2>
 							<p class="text-center">Trickle Music Streaming service aims to be among the best music
 								streaming services by offering quality music at an affordable price.</p>
 						</div>
 					</div>
 					<div class="row mt-2 mb-5">
-						<div class="col col-md-4 offset-md-4">
+						<div class="col-10 offset-1 col col-md-4 offset-md-4">
 							<h2 class="col text-center">Hip-Hop</h2>
 							<p class="text-center">Thats what we offer. Here you can listen to hip hop from new
 								upcoming artists offering a variety fo styles.</p>
 						</div>
 					</div>
 					<div class="row mt-2 mb-5">
-						<div class="col col-md-4 offset-md-4">
+						<div class="col-10 offset-1 col col-md-4 offset-md-4">
 							<h2 class="col text-center">Large Collection of Music</h2>
 							<p class="text-center">We offer a large selection of music and new beats from some of
 								the best producers of all time including Timbaland. New rap music is added to our
@@ -228,14 +228,14 @@
 						</div>
 					</div>
 					<div class="row mt-2 mb-5">
-						<div class="col col-md-4 offset-md-4">
+						<div class="col-10 offset-1 col-md-4 offset-md-4">
 							<h2 class="col text-center">Best Rappers of All Time</h2>
 							<p class="text-center">Listen to some of the best rap music from some of the best
 								rappers of all time, includign T.I, Lil' Wayne, Lil' Baby and many more</p>
 						</div>
 					</div>
 					<div class="row mt-2 mb-5">
-						<div class="col col-md-4 offset-md-4">
+						<div class="col-10 offset-1 col-md-4 offset-md-4">
 							<h2 class="col text-center">Music player Online</h2>
 							<p class="text-center">Listen to rap using our music player online. No need to download
 								any apps or install any software.</p>
