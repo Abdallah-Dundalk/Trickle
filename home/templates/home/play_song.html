@@ -4,14 +4,14 @@
 {% block content %}
  
 <!-- Content section-->
-<div class="music-player-contain">
-  <div class="music-player-container">
-    <div class="music-player c-12">
-      
+
+  <section class=" music-player-container">
+    <div class="music-player my-5">
+
       <div class="cover" id="music-cover">
         <img alt="" src="{{song.image.url}}" />
       </div>
-      <div class="titre">
+      <div class="title">
         <h3>
           {{song.artist}}
         </h3>
@@ -19,56 +19,51 @@
           {{song.title}}
         </h1>
       </div>
-      
-        
 
-        <div class="lecteur col-12">
-          <div class="row">
-            <div class="col-2 p-4">
-              <div class="row">
-                <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"><i
+      <div class="player col-12">
+        <div class="row">
+          <div class="col-2 p-4">
+            <div class="row">
+              <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"><i
                   class="fa fa-step-backward fa-2x"></i>
-              </a> 
-              </div>
-            </div>
-  
-            <div class="col-8 p-0 iframe-container">
-              <div class="row">
-                <!-- <iframe src="{{song.audio_link}}" title="cloudinary media player" class="cloudinary-player" ></iframe> -->
-            <audio class="fc-media" style="width: 100%;">
-              <source src="{% if song.audio_file %}{{song.audio_file.url}} {% else %} {{song.audio_link}} {% endif %}"
-                type="audio/mp3" />
-            </audio>
-              </div>
-            </div>
-  
-            <div class="col-2 p-3 pt-4">
-              <div class="row">
-                <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}"><i
-                  class="fa fa-step-forward fa-2x"></i>
-                </a>
-              </div>
+              </a>
             </div>
           </div>
 
-          
-          
-          
-  
+          <div class="col-8 p-0 iframe-container">
+            <div class="row">
+              <audio class="fc-media" style="width: 100%;">
+                <source src="{% if song.audio_file %}{{song.audio_file.url}} {% else %} {{song.audio_link}} {% endif %}"
+                  type="audio/mp3" />
+              </audio>
+            </div>
+          </div>
+
+          <div class="col-2 p-3 pt-4">
+            <div class="row">
+              <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}"><i
+                  class="fa fa-step-forward fa-2x"></i>
+              </a>
+            </div>
+          </div>
         </div>
 
-        
-      
-      
-      
-    </div>
-  </div>
-</div>
 
-<!-- Footer-->
-<footer class="py-5 bg-dark fixed-bottom">
-    <div ><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-</footer>
+
+
+
+      </div>
+
+
+
+
+
+    </div>
+    </div>
+    </div>
+  </section>
+   
+
 
 {% endblock %}
 
