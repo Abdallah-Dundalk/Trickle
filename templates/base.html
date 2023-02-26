@@ -63,17 +63,17 @@
     			aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     		<div class="collapse navbar-collapse" id="navbarSupportedContent">
     			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-    				<li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a><i
+    				<li class="nav-item"><a class="nav-link mt-2 mt-md-0 ms-3" href="{% url 'home' %}">Home</a><i
     						class="fa-thin fa-droplet"></i></li>
     				{% if request.user.is_authenticated %}
-    				<li class="nav-item"><a class="nav-link" href="{% url 'playlists' %}">Playlists</a></li>
-    				<li class="nav-item"><a class="nav-link" href="{% url 'add_music' %}">Add Music</a></li>
-    				<li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
-    				<li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Log Out</a></li>
-    				<li class="nav-item"><a class="nav-link" href="{% url 'membership_options' %}">Subscribe</a></li>
+    				<li class="nav-item"><a class="nav-link ms-3" href="{% url 'playlists' %}">Playlists</a></li>
+    				<li class="nav-item"><a class="nav-link ms-3" href="{% url 'add_music' %}">Add Music</a></li>
+    				<li class="nav-item"><a class="nav-link ms-3" href="{% url 'profile' %}">Profile</a></li>
+    				<li class="nav-item"><a class="nav-link ms-3" href="{% url 'account_logout' %}">Log Out</a></li>
+    				<li class="nav-item"><a class="nav-link ms-3" href="{% url 'membership_options' %}">Subscribe</a></li>
     				{% else %}
-    				<li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a></li>
-    				<li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Log In</a></li>
+    				<li class="nav-item"><a class="nav-link ms-3" href="{% url 'account_signup' %}">Sign Up</a></li>
+    				<li class="nav-item"><a class="nav-link ms-3" href="{% url 'account_login' %}">Log In</a></li>
     				{% endif %}
     			</ul>
     		</div>
@@ -101,7 +101,7 @@
     	{% endblock %}
 
     	{% for message in messages %}
-    	<div class="col-4 offset-4 alert alert-success alert-dismissible fade show position-absolute zindex-modal-backdrop top-0 end-0 mt-5 me-5"
+    	<div class="col-8 offset-2 col-md-4 offset-md-4 alert alert-success alert-dismissible fade show position-absolute zindex-modal-backdrop top-0 end-0 mt-5 me-5"
     		role="alert">
     		<strong>{{message}}</strong>
     		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

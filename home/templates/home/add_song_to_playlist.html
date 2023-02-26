@@ -5,17 +5,16 @@
 <!-- Content section-->
 <div class="container-fluid music-player-container">
 	<div class="row">
-		<div class="col-4 offset-2 mt-5 bg-custom p-2">
+		<div class="col-8 p-3 p-md-5 offset-2 col-md-4 offset-md-2 mt-5 bg-custom p-2">
 			<div class="row">
-				<div class="col-6">
+				<div class="col-6 col-md-3 col-md-6">
 					<a href="play_song/{{song.id}}">
 						<img class="img-thumbnail" src="{{song.image.url}}" alt="">
 					</a>
 				</div>
-				<div class="col-6"></div>
 			</div>
 		</div>
-		<div class="col-4 mt-5 bg-custom p-5">
+		<div class="col-8 p-3 offset-2 offset-md-0 mt-0 col-md-4 mt-md-5 bg-custom p-md-5">
 			<p class="justify-content-center text-white">You have chosen to add <strong>{{song.title}}</strong> by
 				<strong>{{song.artist}}</strong> to a playlist. Please select a playlist from the dropdown menu below.
 			</p>
@@ -24,10 +23,11 @@
 
 	<form method="POST" action="/add_song_to_playlist/{{song.id}}/" enctype="multipart/form-data">
 		{% csrf_token %}
-		<div class="col-4 offset-4 ">
-			<div class="d-flex justify-content-center text-white mt-5">Select Playlist</div>
+		<div class="col-6 offset-3 col-md-4 offset-md-4 ">
+			<div class="text-center text-white mt-5">Select Playlist</div>
 			<div class="row">
-				{{form.playlist}}
+				<div class="col-12 text-center my-4">{{form.playlist}}</div>
+				
 			</div>
 		</div>
 
