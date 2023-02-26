@@ -2,16 +2,20 @@
 {% load static %}
 
 {% block content %}
-<div class="col-4 offset-4 mt-5 mb-5">
-  <div class="row">
-      <div class="row">
-          <a href="/index" class="btn upload-btn">Add Song</a>
-      </div>  
+
+
+<section class="music-player-container">
+  
+  <div class="col-4 offset-4 mt-5 mb-5">
+    <div class="row">
+        <div class="row">
+            <a href="/index" class="btn upload-btn"><i class="fas fa-plus"></i> Add Songs</a>
+        </div>  
+    </div>
   </div>
-</div>
     {% for playlist_song in playlist_songs %}
 
-    <div class="col-12 song-container bg-dark">
+    <div class="col-12 song-container">
         <div class="row">
           <div class="col-1 blank-space">
             <div class="row">
@@ -44,6 +48,19 @@
         </div>
       </div>
       <hr>
+   
+</section>
+
+    {% empty %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col-10 offset-1 col-md-4 offset-md-4 my-5 bg-custom p-5">
+          <p class="justify-content-center text-white">There are currently no songs in your playlist. Click to below button to add songs.</p>
+        </div>
+       </div>
+    </div>
+    
     {% endfor %}
 
 {% endblock %}
