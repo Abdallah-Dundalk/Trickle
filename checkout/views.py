@@ -121,7 +121,7 @@ def checkout_success(request, order_number):
     # Attach the user's profile to the order
     order.user_profile = profile
     order.save()
-    profile.subscription_expiration_date = datetime.now().date() + timedelta(days=30)
+    profile.subscription_expiration_date = datetime.now().date() + timedelta(days=90)
     profile.subscription_date = datetime.now().date()
     profile.save()
 

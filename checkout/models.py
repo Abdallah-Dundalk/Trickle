@@ -8,6 +8,7 @@ from django_countries.fields import CountryField
 
 # The below code is from Code Institute
 
+
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
@@ -59,7 +60,7 @@ class OrderLineItem(models.Model):
                                            on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2,
-                                         null=False, blank=False, 
+                                         null=False, blank=False,
                                          editable=False)
 
     def save(self, *args, **kwargs):
