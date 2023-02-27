@@ -101,6 +101,7 @@ Once payment is processed, a success page loads informing the user with a button
 * Add automatic monthly subscription payment option
 * Log of music listened to to provide stats to admin
 * More styling and 'polishing' of apps elements
+* Add more music
 
 ## Testing:
 * All links were tested.
@@ -158,7 +159,7 @@ The goal in develpoing Trickle was to create an app that allows the user to have
 * previous an dnext buttons on music player not wired up.
 
 ## Validator Testing:
-* Code for all pages was passed through the W3 Markup validator which deteced errors related to template variables which if handnt encountered before. I chose to ignore these errors as teh code is PEP8 compliant and works.
+* Code for all pages was passed through the W3 Markup validator which deteced errors related to template variables which if handnt encountered before. I chose to ignore these errors as teh code is PEP8 compliant and works .
 * Javascript code was passed through the JShint validator. While several warnings were detected, the javascript code works fine.
 * PEP8 validator was used within the gitpod workspaces and found no Python problems.
 
@@ -208,5 +209,6 @@ Then I set up static and media files that are stored on Cloudinary:
 * My mentor Gurjot Singh for pointing me in the right direction for implementing a music player.
 * W3Schools.com for quick refreshers.
 * Bootstrap doc for loads of useful inforation and handy components, especially the code for pagination which can be foudn here https://getbootstrap.com/docs/5.0/getting-started/introduction/
+* All music from MixtapeMonkey.com and DatPiff.com
 * stackoverflow for information on various error codes.
 * Code intitute for the great learning content.
