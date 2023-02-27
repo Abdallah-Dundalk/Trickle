@@ -5,6 +5,7 @@ from . models import MembershipOptions
 
 
 def membership_options(request):
+    """A view to return all membership options"""
     membership_options = MembershipOptions.objects.all().order_by('pk').values()
 
     template = 'membership_options/membership_options.html'
