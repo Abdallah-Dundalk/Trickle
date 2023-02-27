@@ -5,11 +5,15 @@ This application gives the user access to a catalogue of music and the ability t
 By focusing on content that is more 'underground' , and providing the service at a more affordable cost, the aim is to find an opportunity in a market that is dominated by larger more established services by, attracting consumers who are looking for the hidden gems in artists that are not yet widely known. Trickle is for people who want original music thats not so main stream.
 Trickle offers two options for cunsumers. Option 1 is 90 days access for 8 euro. Option 2 is 1 year for 20 euro. this is far cheaper than most streaming services.
 
+The web application can be accessed here - https://trickle.herokuapp.com/
+
 # Marketing Strategy:
 Social media will be the primary means of marketing for Trickle initially, given that Facebook provides the ability to share content and reach potentially huges audience for little cost, it makes perfect sense to use it as a marketing platform. Facebook lends itself well for businesses like Trickle as the product we provide can be share easily creating brand awareness along the way. Trickles goal is to place the product where the audience can easily find it and share it. 
 The 2nd aspect of Trickles marketing comprises of mail marketing. By providing a news letter sign up option on the app, we can keep customers engaged by keeping them informed of products beign offered or updates to services provided or even offering discounts for reffering new members.
 
-The web application can be accessed here - https://trickle.herokuapp.com/
+# Facebook Page:
+A facebook business page was create for Trickle.com.
+![Trickle Facebook Page]( /media/facebook_page.JPG)
 
 ![Trickle Landing Page]( /media/home_page.JPG)
 
