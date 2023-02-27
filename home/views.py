@@ -60,6 +60,7 @@ def index(request):
 
 @login_required
 def get_play_song_page(request, song_id):
+    """A view to return a song for playback"""
     song = get_object_or_404(Song, id=song_id)
 
     context = {
@@ -71,6 +72,7 @@ def get_play_song_page(request, song_id):
 
 @login_required
 def add_music(request):
+    """A view to handle posting of files to the Song model"""
     if request.method == 'POST':
         form = AddSongForm(request.POST, request.FILES)
         if form.is_valid():
@@ -92,6 +94,7 @@ def add_music(request):
 
 @login_required
 def delete_music(request, song_id):
+    """A view to handle deletion of songs"""
     song = get_object_or_404(Song, id=song_id)
     if request.method == 'POST' and 'delete-btn' in request.POST:
         song.delete()
@@ -109,6 +112,7 @@ def delete_music(request, song_id):
 
 @login_required
 def playlists(request):
+    """A view to return all playlists for a user"""
     playlists = Playlist.objects.all().filter(user=request.user)
     template = 'home/playlists.html'
     context = {
@@ -120,6 +124,7 @@ def playlists(request):
 
 @login_required
 def playlist_songs(request, playlist_id):
+    """A view to return all songs in a playlist"""
     playlist_songs = Song.objects.all().filter(playlist=playlist_id)
     template = 'home/playlist_songs.html'
     context = {
@@ -131,6 +136,7 @@ def playlist_songs(request, playlist_id):
 
 @login_required
 def edit_playlist(request, playlist_id):
+    """A view to return a playlistfor editing"""
     playlist = get_object_or_404(Playlist, id=playlist_id)
     template = 'home/edit_playlist.html'
     if request.method == 'POST':
@@ -149,6 +155,7 @@ def edit_playlist(request, playlist_id):
 
 @login_required
 def delete_playlist(request, playlist_id):
+    """A view to return a playlist for deletion"""
     playlist = get_object_or_404(Playlist, id=playlist_id)
     if request.method == 'POST' and 'delete-btn' in request.POST:
         playlist.delete()
@@ -166,6 +173,7 @@ def delete_playlist(request, playlist_id):
 
 @login_required
 def add_playlist(request):
+    """A view to handle adding a new playlist"""
     user = request.user
     template = 'home/add_playlist.html'
     if request.method == 'POST':
@@ -189,6 +197,7 @@ def add_playlist(request):
 
 @login_required
 def add_song_to_playlist(request, song_id):
+    """A view to handle adding a song to a playlist"""
     song = get_object_or_404(Song, id=song_id)
     template = 'home/add_song_to_playlist.html'
     if request.method == 'POST':
