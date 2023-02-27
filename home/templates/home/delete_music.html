@@ -7,19 +7,19 @@
 
 
 <section class="music-player-container">
-	<h1 class="text-center mt-3 trickle-heading">Delete Playlist</h1>
+	<h1 class="text-center mt-3 trickle-heading">Delete Song</h1>
 	<form method="POST" action="" enctype="multipart/form-data">
 		{% csrf_token %}
 		<div class="col-10 offset-1 col-md-4 offset-md-4 my-5 bg-custom p-5">
-			<p class="justify-content-center text-white">Are you sure you want to delete {{playlist.playlist_name}}
-				playlist? This action cannot be undone.
+			<p class="justify-content-center text-white">Are you sure you want to delete {{song.title}}
+				? This action cannot be undone.
 			</p>
 		</div>
 
 		<div class="col-4 offset-4 ">
-			<div>{{form.playlist.label_tag}}</div>
+			<div>{{form.title.label_tag}}</div>
 			<div class="row">
-				{{form.playlist_name}}
+				{{form.title}}
 			</div>
 		</div>
 

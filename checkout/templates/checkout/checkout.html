@@ -1,12 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_meta %}
-    <meta name="description" 
-    content="Check page with form for making purchases." />
-{% endblock %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+	<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -17,7 +13,7 @@
 	<div id="loading-screen">
 		<h1 class="text-light logo-font loading-spinner">
 			Processing Payment
-			<hr>
+
 			<span class="icon d-flex d-block justify-content-center">
 				<i class="fas fa-3x fa-spinner fa-spin"></i>
 			</span>
@@ -85,7 +81,6 @@
 			<span>Your card will be charged <strong>${{ order_total|floatformat:2 }}</strong></span>
 		</p>
 	</form>
-</div>
 </section>
 {% endblock %}
 

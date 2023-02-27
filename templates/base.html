@@ -63,25 +63,25 @@
     			aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     		<div class="collapse navbar-collapse" id="navbarSupportedContent">
     			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-    				<li class="nav-item"><a class="nav-link mt-2 mt-md-0 ms-3" href="{% url 'home' %}">Home</a><i
+    				<li class="nav-item"><a class="nav-link mt-2 mt-md-0 ms-3" href="{% url 'home' %}"><i class="fas fa-headphones"></i>Home</a><i
     						class="fa-thin fa-droplet"></i></li>
     				{% if request.user.is_authenticated %}
 						{% for group in request.user.groups.all %} 
         					{% if group.name == 'subscribed' %} 
 								{% if request.user.is_superuser %}
-									<li class="nav-item"><a class="nav-link ms-3" href="{% url 'add_music' %}">Add Music</a></li>
+									<li class="nav-item"><a class="nav-link ms-3" href="{% url 'add_music' %}"><i class="fas fa-cloud-upload-alt"></i>Add Music</a></li>
 								{% endif %}
-								<li class="nav-item"><a class="nav-link ms-3" href="{% url 'playlists' %}">Playlists</a></li>
-								<li class="nav-item"><a class="nav-link ms-3" href="{% url 'profile' %}">Profile</a></li>
+								<li class="nav-item"><a class="nav-link ms-3" href="{% url 'playlists' %}"><i class="fas fa-folder"></i>Playlists</a></li>
+								<li class="nav-item"><a class="nav-link ms-3" href="{% url 'profile' %}"><i class="far fa-user-circle"></i>Profile</a></li>
 								<li class="nav-item"><a class="nav-link ms-3" href="{% url 'account_logout' %}">Log Out</a></li>
 							{% endif %}
 						{% empty %}
-						<li class="nav-item"><a class="nav-link ms-3" href="{% url 'membership_options' %}">Subscribe</a></li>
-						<li class="nav-item"><a class="nav-link ms-3" href="{% url 'account_logout' %}">Log Out</a></li>
+						<li class="nav-item"><a class="nav-link ms-3" href="{% url 'membership_options' %}"><i class="fas fa-subscript"></i>Subscribe</a></li>
+						<li class="nav-item"><a class="nav-link ms-3" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i>Log Out</a></li>
 						{% endfor %}
     				{% else %}
-    				<li class="nav-item"><a class="nav-link ms-3" href="{% url 'account_signup' %}">Sign Up</a></li>
-    				<li class="nav-item"><a class="nav-link ms-3" href="{% url 'account_login' %}">Log In</a></li>
+    				<li class="nav-item"><a class="nav-link ms-3" href="{% url 'account_signup' %}"><i class="fas fa-user-plus"></i><i class="fas fa-user-plus"></i>Sign Up</a></li>
+    				<li class="nav-item"><a class="nav-link ms-3" href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt"></i>Log In</a></li>
     				{% endif %}
     			</ul>
     		</div>

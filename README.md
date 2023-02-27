@@ -158,7 +158,7 @@ The goal in develpoing Trickle was to create an app that allows the user to have
 * previous an dnext buttons on music player not wired up.
 
 ## Validator Testing:
-* Code for all pages was passed through the W3 Markup validator with no errors detected.
+* Code for all pages was passed through the W3 Markup validator which deteced errors related to template variables which if handnt encountered before. I chose to ignore these errors as teh code is PEP8 compliant and works.
 * Javascript code was passed through the JShint validator. While several warnings were detected, the javascript code works fine.
 * PEP8 validator was used within the gitpod workspaces and found no Python problems.
 

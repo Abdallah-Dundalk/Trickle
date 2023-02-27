@@ -91,6 +91,23 @@ def add_music(request):
 
 
 @login_required
+def delete_music(request, song_id):
+    song = get_object_or_404(Song, id=song_id)
+    if request.method == 'POST' and 'delete-btn' in request.POST:
+        song.delete()
+        messages.success(request, 'Song deleted.')
+        return redirect('home')
+    elif request.method == 'POST' and 'cancel-btn' in request.POST:
+        messages.success(request, 'Song not deleted.')
+        return redirect('home')
+    form = AddSongForm(instance=song)
+    context = {
+        'song': song,
+    }
+    return render(request, 'home/delete_music.html', context)
+
+
+@login_required
 def playlists(request):
     playlists = Playlist.objects.all().filter(user=request.user)
     template = 'home/playlists.html'

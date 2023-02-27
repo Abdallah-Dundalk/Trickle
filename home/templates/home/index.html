@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block extra_meta %}
-    <meta name="description" 
-    content="Landing page where users can sign up or log in or listen to music depending on their membership status." />
-{% endblock %}
+
 {% block content %}
  
 <!-- Content section-->
@@ -11,7 +8,7 @@
     {% for group in request.user.groups.all %} 
         {% if group.name == 'subscribed' %} 
 			<section class="music-player-container">
-				<h1 class="text-center mt-3 trickle-heading">Home</h1>
+				<h1 class="text-center mt-3 trickle-heading fs-4">Home</h1>
 				<form action="" method="GET">
 					<input type="text" name="q" placeholder="Search music" class="my-2 col-4 offset-4 mt-4">
 
@@ -42,9 +39,15 @@
 											<h6 class="text-white h-35 mb-4">By: {{song.artist}}</h6>
 										</div>
 										<div><a href="add_song_to_playlist/{{song.id}}"
-												class="btn btn-warning btn-sm btn-position"><i class="fas fa-plus"></i><strong></i>
+												class="btn btn-warning btn-sm btn-position"><i class="fas fa-plus"></i><strong>
 													to Playlist</a></strong>
 										</div>
+										{% if user.is_superuser %}
+										<div class=" ">
+											<a href="/delete_music/{{song.id}}" class="btn-sm btn-position btn btn-danger mt-3"><i
+													class="fas fa-trash-alt"></i>DEL</a>
+										</div>
+										{% endif %}
 									</div>
 								</div>
 							</div>

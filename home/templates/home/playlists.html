@@ -1,9 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block extra_meta %}
-    <meta name="description" 
-    content="A page where a user can view all of their playlists." />
-{% endblock %}
 
 {% block content %}
 <section class="music-player-container-repeat row">
@@ -12,7 +8,6 @@
             <div class="row">
                 <a href="/add_playlist" class="btn upload-btn text-center"><i class="fas fa-plus"></i>Add Playlist</a>
             </div>
-        </div>
     </div>
 
     <div class="container-fluid">
