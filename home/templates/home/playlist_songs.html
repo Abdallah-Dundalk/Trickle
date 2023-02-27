@@ -9,9 +9,11 @@
 <section class="music-player-container">
 	
 	{% for playlist_song in playlist_songs%}
-	{% if forloop.first %}
-		<h1 class="trickle-font text-center m-3 fs-4">{{playlist_song.playlist| upper}} Playlist</h1>
-	{% endif %}
+		{% if forloop.first %}
+			<h1 class="trickle-font text-center m-3 fs-4">{{playlist_song.playlist| upper}} PLAYLIST</h1>
+	
+			
+		{% endif %}
 	{% endfor%}
 
 	<div class="col-4 offset-4 mt-5 mb-5">
@@ -57,6 +59,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-10 offset-1 col-md-4 offset-md-4 my-5 bg-custom p-5">
+				<h1 class="trickle-font text-center m-3 fs-4">PLAYLIST</h1>
 				<p class="justify-content-center text-white">There are currently no songs in your playlist. Click to
 					'Add songs' button to add music.</p>
 			</div>

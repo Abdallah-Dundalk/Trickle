@@ -11,6 +11,7 @@
     {% for group in request.user.groups.all %} 
         {% if group.name == 'subscribed' %} 
 			<section class="music-player-container">
+				<h1 class="text-center mt-3 trickle-heading">Home</h1>
 				<form action="" method="GET">
 					<input type="text" name="q" placeholder="Search music" class="my-2 col-4 offset-4 mt-4">
 

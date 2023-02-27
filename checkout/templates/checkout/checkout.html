@@ -3,7 +3,7 @@
 
 {% block extra_meta %}
     <meta name="description" 
-    content="Check page with form for makign purchases." />
+    content="Check page with form for making purchases." />
 {% endblock %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
@@ -11,9 +11,9 @@
 
 {% block content %}
 <!-- Content section-->
-<h1 class="text-center mt-3 trickle-heading">Checkout</h1>
-	{% endfor %}
+<section class="music-player-container">
 
+	<h1 class="text-center mt-3 trickle-heading">Checkout</h1>
 	<div id="loading-screen">
 		<h1 class="text-light logo-font loading-spinner">
 			Processing Payment
@@ -86,6 +86,7 @@
 		</p>
 	</form>
 </div>
+</section>
 {% endblock %}
 
 {% block postloadjs %}
